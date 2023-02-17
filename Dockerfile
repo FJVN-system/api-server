@@ -2,7 +2,7 @@ FROM openjdk:17-alpine
 
 WORKDIR /usr/src/app
 
-RUN cp ./build/libs/api-server-0.0.1-SNAPSHOT.jar ./build/libs/api-server-0.0.1-SNAPSHOT.jar
+COPY /build/libs/api-server-0.0.1-SNAPSHOT.jar /build/libs/api-server-0.0.1-SNAPSHOT.jar
 
 EXPOSE 8080
 
