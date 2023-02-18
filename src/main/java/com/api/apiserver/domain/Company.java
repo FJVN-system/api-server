@@ -26,6 +26,9 @@ public class Company {
     private List<Users> users = new ArrayList<>();
 
     @OneToMany(mappedBy = "company")
+    private List<Shipping> shippings = new ArrayList<>();
+
+    @OneToMany(mappedBy = "company")
     private List<Product> products = new ArrayList<>();
 
     @OneToMany(mappedBy = "company")

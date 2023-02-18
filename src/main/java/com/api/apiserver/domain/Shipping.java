@@ -2,18 +2,13 @@ package com.api.apiserver.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
-import static javax.persistence.FetchType.*;
+import static javax.persistence.FetchType.LAZY;
 
 @Getter
 @Setter
@@ -21,36 +16,42 @@ import static javax.persistence.FetchType.*;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "users")
-public class Users {
+@Table(name = "shipping")
+public class Shipping {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "users_id")
+    @Column(name = "shipping_id")
     private Long id;
 
-    @NotNull
-    @Column(name = "users_name", unique = true)
-    private String userName;
+    @JsonIgnore
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "users_id")
+    private Users users;
 
     @JsonIgnore
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "company_id")
     private Company company;
+    private Long totalPrice;
+    private Long shippingPrice;
+    private Long itemsPrice;
+    private Long totalCount;
+    private Long itemsCount;
 
-    @OneToMany(mappedBy = "users")
-    private List<CartsItem> cartsItems = new ArrayList<>();
+    private String ShippedAddressName;
+    private String shippingType;
+    private LocalDateTime shippedAt;
 
-    @OneToMany(mappedBy = "users")
-    private List<Shipping> shippings = new ArrayList<>();
-
-    @OneToMany(mappedBy = "users")
-    private List<Address> addresses = new ArrayList<>();
+    @OneToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
 
     @CreatedDate
     private LocalDateTime createdAt;
 
     @LastModifiedDate
     private LocalDateTime updatedAt;
+
 
 }
