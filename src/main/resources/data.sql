@@ -337,4 +337,99 @@ values (33,
         now(),
         now());
 
+-- 주소 address
+insert into address(address_id,
+                    users_id,
+                    zipcode,
+                    phone_number,
+                    address_name,
+                    address1,
+                    address2,
+                    address3,
+                    state,
+                    city,
+                    created_At,
+                    updated_At)
+values (333,
+        22,
+        888888,
+        01047634695,
+        '우리집',
+        '서울시',
+        '관악구',
+        '봉천동',
+        'seoul',
+        'seoul2',
+        now(),
+        now());
+
+
+
+
+-- 배송 shipping
+insert into shipping(shipping_id,
+                     users_id,
+                     company_id,
+                     total_price,
+                     shipping_price,
+                     items_price,
+                     total_count,
+                     items_count,
+                     Shipped_address_name,
+                     shipping_type,
+                     shipped_at,
+                     address_id,
+                     created_At,
+                     updated_At)
+values (33,
+        22,
+        'inter-qwe',
+        300000,
+        3000,
+        297000,
+        10,
+        30,
+        '우리집',
+        '대한통운',
+        now(),
+        333,
+        now(),
+        now());
+
+
+-- 배송상품 shippingItems
+insert into shippingitems(shippingitems_id,
+                          shipping_id,
+                          users_id,
+                          product_id,
+                          price,
+                          qty,
+                          created_At,
+                          updated_At)
+values (33667,
+        33,
+        22,
+        11,
+        30000,
+        3,
+        now(),
+        now());
+insert into shippingitems(shippingitems_id,
+                          shipping_id,
+                          users_id,
+                          product_id,
+                          price,
+                          qty,
+                          created_At,
+                          updated_At)
+values (3366732,
+        33,
+        22,
+        22,
+        20000,
+        2,
+        now(),
+        now());
+
+
 

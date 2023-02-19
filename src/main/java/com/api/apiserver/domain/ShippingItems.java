@@ -16,12 +16,12 @@ import static javax.persistence.FetchType.LAZY;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "shippingItems")
+@Table(name = "shippingitems")
 public class ShippingItems {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "shippingItems_id")
+    @Column(name = "shippingitems_id")
     private Long id;
 
     @JsonIgnore

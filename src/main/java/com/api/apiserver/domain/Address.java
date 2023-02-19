@@ -29,10 +29,12 @@ public class Address {
     @JoinColumn(name = "users_id")
     private Users users;
 
+
     private Long zipcode;
 
     private Long phoneNumber;
 
+    private String addressName;
     private String address1;
     private String address2;
     private String address3;
