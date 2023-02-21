@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface CreditService {
 
-    List<CreditDTO> getAllCreditCompanyIdAndUsersId(String companyId, Long userId);
+    List<CreditDTO> getAllCreditCompanyIdAndUsersId(Long companyId, Long userId);
 }

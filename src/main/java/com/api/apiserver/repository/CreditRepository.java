@@ -10,5 +10,5 @@ import java.util.List;
 
 @Repository
 public interface CreditRepository extends JpaRepository<Credit, Long> {
-    List<Credit> findByCompany_IdAndUsers_Id(String company_id, Long users_id);
+    List<Credit> findByCompany_IdAndUsers_Id(Long company_id, Long users_id);
 }

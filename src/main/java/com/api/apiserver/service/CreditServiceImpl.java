@@ -19,7 +19,7 @@ public class CreditServiceImpl implements CreditService{
     private final CreditRepository creditRepository;
 
     @Override
-    public List<CreditDTO> getAllCreditCompanyIdAndUsersId(String companyId, Long userId) {
+    public List<CreditDTO> getAllCreditCompanyIdAndUsersId(Long companyId, Long userId) {
         List<Credit> creditList = creditRepository.findByCompany_IdAndUsers_Id(companyId, userId);
         return creditList
                 .stream()

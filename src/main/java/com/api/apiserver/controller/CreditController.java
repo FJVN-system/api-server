@@ -19,7 +19,7 @@ public class CreditController {
 
     @GetMapping("/{companyId}/credit/{userId}")
     public ResponseEntity<List<CreditDTO>> getAllCreditCompanyIdAndUsersId(
-            @Valid @PathVariable("companyId") String companyId,
+            @Valid @PathVariable("companyId") Long companyId,
             @Valid @PathVariable("userId") Long userId) {
         return ResponseEntity.ok(creditService.getAllCreditCompanyIdAndUsersId(companyId, userId));
     }
