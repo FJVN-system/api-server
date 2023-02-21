@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 public class UsersDTO {
 
     private Long id;
+    private Long companyId;
     private String userName;
     private String companyName;
     private LocalDateTime createdAt;
@@ -21,6 +22,8 @@ public class UsersDTO {
     public static UsersDTO fromEntity(Users users) {
         return UsersDTO.builder()
                 .id(users.getId())
+                .companyId(users.getCompany().getId())
+                .companyName(users.getCompany().getCompanyName())
                 .userName(users.getUserName())
                 .createdAt(users.getCreatedAt())
                 .updatedAt(users.getUpdatedAt())
