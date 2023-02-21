@@ -25,8 +25,7 @@ public class UserController {
     @GetMapping("/users/{userId}")
     public ResponseEntity<UsersDTO> getUser(
             @Valid @PathVariable("userId") Long userId) {
-        return ResponseEntity.ok(UsersDTO.fromEntity(
-                usersService.getUser(userId)));
+        return ResponseEntity.ok(usersService.getUserDTO(userId));
     }
 
     @PostMapping("/users")

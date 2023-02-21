@@ -38,6 +38,12 @@ public class UsersServiceImpl implements UsersService{
     }
 
     @Override
+    public UsersDTO getUserDTO(Long userId) {
+        return UsersDTO.fromEntity(usersRepository.findById(userId)
+                .orElseThrow(()-> new UserException(USER_NOT_FOUND)));
+    }
+
+    @Override
     public List<UsersDTO> getAllUsers() {
         List<Users> usersList = usersRepository.findAll();
         return usersList
