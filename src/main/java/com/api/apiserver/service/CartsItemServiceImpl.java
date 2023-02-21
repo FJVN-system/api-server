@@ -41,13 +41,21 @@ public class CartsItemServiceImpl implements CartsItemService{
                 .map(CartsItemDTO::fromEntity)
                 .toList();
     }
+    @Override
+    public List<CartsItemDTO> getAllCartsItemsByUserIdAndProductId(Long userId, Long productId) {
+        List<CartsItem> cartsItemList = cartsItemRepository.findByUsers_IdAndProduct_Id(userId, productId);
+        return cartsItemList
+                .stream()
+                .map(CartsItemDTO::fromEntity)
+                .toList();
+    }
 
     @Override
     public CartsItemDTO createCartsItem(Long userId, Long productId, Long qty) {
         Users user = usersService.getUser(userId);
         Product product = productService.getProduct(productId);
 
-        validateAlreadyExistCartsItem(user);
+        validateAlreadyExistCartsItem(user, product);
         validateCreateCartsItem(product, qty);
 
         return CartsItemDTO.fromEntity(cartsItemRepository.save(
@@ -67,8 +75,8 @@ public class CartsItemServiceImpl implements CartsItemService{
         }
     }
 
-    private void validateAlreadyExistCartsItem(Users users) throws CartsItemException {
-        List<CartsItemDTO> cartsItemDTO = getAllCartsItemsByUserId(users.getId());
+    private void validateAlreadyExistCartsItem(Users users, Product product) throws CartsItemException {
+        List<CartsItemDTO> cartsItemDTO = getAllCartsItemsByUserIdAndProductId(users.getId(), product.getId());
         if (cartsItemDTO.size() > 0) {
             throw new CartsItemException(ALREADY_ADDED_ON_CART);
         }

@@ -10,6 +10,7 @@ public interface CartsItemService {
     List<CartsItemDTO> getAllCartsItems();
 
     List<CartsItemDTO> getAllCartsItemsByUserId(Long userId);
+    List<CartsItemDTO> getAllCartsItemsByUserIdAndProductId(Long userId, Long productId);
 
     CartsItemDTO createCartsItem(Long userId, Long productId, Long qty);
 }

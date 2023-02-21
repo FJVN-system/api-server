@@ -241,20 +241,20 @@ values (22,
         now());
 
 -- 카트 아이템 cartsitem
-insert into cartsitem(cartsitem_id,
-                      product_id,
-                      users_id,
-                      price,
-                      qty,
-                      created_At,
-                      updated_At)
-values (22,
-        11,
-        22,
-        20000,
-        2,
-        now(),
-        now());
+-- insert into cartsitem(cartsitem_id,
+--                       product_id,
+--                       users_id,
+--                       price,
+--                       qty,
+--                       created_At,
+--                       updated_At)
+-- values (22,
+--         11,
+--         22,
+--         20000,
+--         2,
+--         now(),
+--         now());
 
 insert into cartsitem(cartsitem_id,
                       product_id,
