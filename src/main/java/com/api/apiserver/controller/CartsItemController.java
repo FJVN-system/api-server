@@ -23,7 +23,7 @@ public class CartsItemController {
     }
 
     @PostMapping("/carts")
-    public ResponseEntity<CreateCartsItem.Response>  createUser(
+    public ResponseEntity<CreateCartsItem.Response>  createCarts(
             @RequestBody @Valid CreateCartsItem.Request request
     ) {
 
