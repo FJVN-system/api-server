@@ -23,9 +23,10 @@ public class UserController {
     }
 
     @GetMapping("/users/{userId}")
-    public ResponseEntity<UserDTO> getUser(
+    public ResponseEntity<UsersDTO> getUser(
             @Valid @PathVariable("userId") Long userId) {
-        return ResponseEntity.ok(usersService.getUser(userId));
+        return ResponseEntity.ok(UsersDTO.fromEntity(
+                usersService.getUser(userId)));
     }
 
     @PostMapping("/users")
@@ -33,8 +34,7 @@ public class UserController {
             @RequestBody @Valid CreateUsers.Request request
     ) {
         return CreateUsers.Response.from(
-                usersService.createUser(
-                        request.getUserName()));
+                usersService.createUser(request.getUserName()));
     }
 
     @GetMapping("/usersbycompanyid/{companyId}")

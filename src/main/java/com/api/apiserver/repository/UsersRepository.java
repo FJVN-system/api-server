@@ -7,11 +7,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UsersRepository extends JpaRepository<Users, String> {
 
     List<Users> findByCompany_Id(String company_id);
 
-    Users findById(Long users_id);
+    Optional<Users> findById(Long users_id);
+
 }

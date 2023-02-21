@@ -2,12 +2,15 @@ package com.api.apiserver.service;
 
 import com.api.apiserver.DTO.product.ProductsDTO;
 import com.api.apiserver.domain.Product;
+import com.api.apiserver.exception.ProductException;
 import com.api.apiserver.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
+import static com.api.apiserver.type.ErrorCode.PRODUCT_NOT_FOUND;
 
 @Transactional
 @Service
@@ -17,6 +20,11 @@ public class ProductServiceImpl implements ProductService{
 
     private final ProductRepository productRepository;
 
+    @Transactional
+    public Product getProduct(Long productId) {
+        return productRepository.findById(productId)
+                .orElseThrow(() -> new ProductException(PRODUCT_NOT_FOUND));
+    }
 
 
     @Override

@@ -1,6 +1,8 @@
 package com.api.apiserver.controller;
 
 import com.api.apiserver.DTO.cartsitem.CartsItemDTO;
+import com.api.apiserver.DTO.cartsitem.CreateCartsItem;
+import com.api.apiserver.DTO.users.CreateUsers;
 import com.api.apiserver.service.CartsItemService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,19 @@ public class CartsItemController {
     @GetMapping("/carts")
     public ResponseEntity<List<CartsItemDTO>> getAllCartsItems() {
         return ResponseEntity.ok(cartsItemService.getAllCartsItems());
+    }
+
+    @PostMapping("/carts")
+    public ResponseEntity<CreateCartsItem.Response>  createUser(
+            @RequestBody @Valid CreateCartsItem.Request request
+    ) {
+
+        return ResponseEntity.ok(CreateCartsItem.Response.from(
+                cartsItemService.createCartsItem(
+                        request.getUsersId(),
+                        request.getProductId(),
+                        request.getQty()
+                )));
     }
 
     @GetMapping("/carts/{userId}")

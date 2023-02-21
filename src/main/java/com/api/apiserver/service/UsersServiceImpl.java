@@ -1,17 +1,17 @@
 package com.api.apiserver.service;
 
-import com.api.apiserver.DTO.users.UserDTO;
 import com.api.apiserver.DTO.users.UsersDTO;
 import com.api.apiserver.domain.Users;
+import com.api.apiserver.exception.UserException;
 import com.api.apiserver.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
+
+import static com.api.apiserver.type.ErrorCode.USER_NOT_FOUND;
 
 @Transactional
 @Service
@@ -32,9 +32,9 @@ public class UsersServiceImpl implements UsersService{
     }
 
     @Override
-    public UserDTO getUser(Long userId) {
-        Users user = usersRepository.findById(userId);
-        return UserDTO.fromEntity(user);
+    public Users getUser(Long userId) {
+        return usersRepository.findById(userId)
+                .orElseThrow(()-> new UserException(USER_NOT_FOUND));
     }
 
     @Override
