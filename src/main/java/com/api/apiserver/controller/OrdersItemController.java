@@ -26,10 +26,10 @@ public class OrdersItemController {
 
     @GetMapping("/{companyId}/ordersitem/{userId}")
     public ResponseEntity<List<OrdersItemDTO>> getAllCartsItemsByUserIdAndCompanyId(
-            @Valid @PathVariable("userId") Long userId,
-            @Valid @PathVariable("companyId") Long companyId
+            @Valid @PathVariable("companyId") Long companyId,
+            @Valid @PathVariable("userId") Long userId
     ) {
-        return ResponseEntity.ok(ordersItemService.getAllOrdersItemsByUserIdAndCompanyId(userId, companyId));
+        return ResponseEntity.ok(ordersItemService.getAllOrdersItemsByUserIdAndCompanyId(companyId, userId));
     }
 
 }
