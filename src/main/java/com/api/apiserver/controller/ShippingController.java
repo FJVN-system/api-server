@@ -22,7 +22,7 @@ public class ShippingController {
 
     @GetMapping("/{companyId}/shipping/{userId}")
     public ResponseEntity<List<ShippingDTO>> getAllShippingByCompanyIdAndUsersId(
-            @Valid @PathVariable("companyId") String companyId,
+            @Valid @PathVariable("companyId") Long companyId,
             @Valid @PathVariable("userId") Long userId) {
         return ResponseEntity.ok(shippingService.getAllProductsByCompanyIdAndUsersId(companyId, userId));
     }

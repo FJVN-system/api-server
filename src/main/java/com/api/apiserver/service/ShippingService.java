@@ -11,5 +11,5 @@ public interface ShippingService {
 
 
 
-    List<ShippingDTO> getAllProductsByCompanyIdAndUsersId(String companyId, Long userId);
+    List<ShippingDTO> getAllProductsByCompanyIdAndUsersId(Long companyId, Long userId);
 }
