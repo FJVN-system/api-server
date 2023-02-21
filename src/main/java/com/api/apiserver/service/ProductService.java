@@ -10,7 +10,7 @@ public interface ProductService {
     List<ProductsDTO> getAllProducts();
 
 
-    List<ProductsDTO> getAllProductsByCompanyId(String companyId);
+    List<ProductsDTO> getAllProductsByCompanyId(Long companyId);
 
-    List<ProductsDTO> getAllProductsByCompanyIdAndCategory(String companyId, String category);
+    List<ProductsDTO> getAllProductsByCompanyIdAndCategory(Long companyId, String category);
 }

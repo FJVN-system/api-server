@@ -30,7 +30,7 @@ public class ProductServiceImpl implements ProductService{
 
 
     @Override
-    public List<ProductsDTO> getAllProductsByCompanyId(String companyId) {
+    public List<ProductsDTO> getAllProductsByCompanyId(Long companyId) {
         List<Product> products = productRepository.findByCompany_Id(companyId);
         return products
                 .stream()
@@ -39,7 +39,7 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public List<ProductsDTO> getAllProductsByCompanyIdAndCategory(String companyId, String category) {
+    public List<ProductsDTO> getAllProductsByCompanyIdAndCategory(Long companyId, String category) {
         List<Product> products = productRepository.findByCompany_IdAndCategory_Name(companyId, category);
         return products
                 .stream()
