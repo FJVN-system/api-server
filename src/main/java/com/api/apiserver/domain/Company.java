@@ -5,6 +5,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +20,9 @@ import java.util.List;
 public class Company {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "company_id")
-    private String id;
+    private Long id;
 
     @OneToMany(mappedBy = "company")
     private List<Users> users = new ArrayList<>();
@@ -32,13 +34,19 @@ public class Company {
     private List<Product> products = new ArrayList<>();
 
     @OneToMany(mappedBy = "company")
+    private List<OrdersItem> ordersItems = new ArrayList<>();
+
+    @OneToMany(mappedBy = "company")
     private List<Artist> artists = new ArrayList<>();
 
     @OneToMany(mappedBy = "company")
     private List<StockHistory> stockHistories = new ArrayList<>();
 
+    @NotNull
+    @Column(name = "company_name",unique = true)
     private String companyName;
 
+    @NotNull
     private String owner;
 
     @CreatedDate

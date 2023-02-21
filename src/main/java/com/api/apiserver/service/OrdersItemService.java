@@ -9,5 +9,5 @@ import java.util.List;
 public interface OrdersItemService {
     List<OrdersItemDTO> getAllOrdersItems();
 
-    List<OrdersItemDTO> getAllOrdersItemsByUserId(Long userId);
+    List<OrdersItemDTO> getAllOrdersItemsByUserIdAndCompanyId(Long userId, Long companyId);
 }

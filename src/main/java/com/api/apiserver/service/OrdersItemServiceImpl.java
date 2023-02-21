@@ -28,8 +28,8 @@ public class OrdersItemServiceImpl implements OrdersItemService{
     }
 
     @Override
-    public List<OrdersItemDTO> getAllOrdersItemsByUserId(Long userId) {
-        List<OrdersItem> ordersItemList = ordersItemRepository.findByUsers_Id(userId);
+    public List<OrdersItemDTO> getAllOrdersItemsByUserIdAndCompanyId(Long userId, Long companyId) {
+        List<OrdersItem> ordersItemList = ordersItemRepository.findByUsers_IdAndAndCompany_Id(userId, companyId);
         return ordersItemList
                 .stream()
                 .map(OrdersItemDTO::fromEntity)

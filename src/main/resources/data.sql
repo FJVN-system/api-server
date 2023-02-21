@@ -5,7 +5,7 @@ insert into company(company_id,
                     owner,
                     created_at,
                     updated_at)
-values ('hm-qwe',
+values (11111,
         'HM',
         '만수',
         now(),
@@ -16,7 +16,7 @@ insert into company(company_id,
                     owner,
                     created_at,
                     updated_at)
-values ('inter-qwe',
+values (22222,
         'INTER',
         '주',
         now(),
@@ -30,7 +30,7 @@ insert into users(users_id,
                   updated_At)
 values (22,
         '김경환',
-        'hm-qwe',
+        11111,
         now(),
         now());
 
@@ -42,7 +42,7 @@ insert into users(users_id,
                   updated_At)
 values (33,
         '환',
-        'inter-qwe',
+        22222,
         now(),
         now());
 
@@ -52,13 +52,13 @@ insert into artist(artist_id,
                    company_id)
 values (11,
         '진',
-        'hm-qwe');
+        11111);
 insert into artist(artist_id,
                    artist_name,
                    company_id)
 values (22,
         '뷔',
-        'inter-qwe');
+        22222);
 
 -- 카테고리 category
 insert into category(category_id,
@@ -66,14 +66,14 @@ insert into category(category_id,
                      company_id)
 values (11,
         '음반',
-        'hm-qwe');
+        11111);
 
 insert into category(category_id,
                      category_name,
                      company_id)
 values (22,
         '굿즈',
-        'inter-qwe');
+        22222);
 
 -- 엔터 ent
 insert into ent(ent_id,
@@ -81,13 +81,13 @@ insert into ent(ent_id,
                 company_id)
 values (11,
         'SM',
-        'hm-qwe');
+        11111);
 insert into ent(ent_id,
                 ent_name,
                 company_id)
 values (22,
         'hive',
-        'inter-qwe');
+        22222);
 
 
 
@@ -115,7 +115,7 @@ insert into product(product_id,
                     created_At,
                     updated_At)
 values (11,
-        'hm-qwe',
+        11111,
         11,
         11,
         11,
@@ -157,7 +157,7 @@ insert into product(product_id,
                     created_At,
                     updated_At)
 values (22,
-        'inter-qwe',
+        22222,
         22,
         22,
         22,
@@ -223,7 +223,7 @@ insert into stockHistory(stockhistory_id,
                         updated_At)
 values (11,
         22,
-        'inter-qwe',
+        22222,
         '안좋은 상품',
         now(),
         now());
@@ -235,7 +235,7 @@ insert into stockHistory(stockhistory_id,
                          updated_At)
 values (22,
         11,
-        'hm-qwe',
+        11111,
         '좋은 상품',
         now(),
         now());
@@ -307,6 +307,7 @@ insert into ordersitem(ordersitem_id,
                        users_id,
                        price,
                        qty,
+                       company_id,
                        shipped,
                        created_At,
                        updated_At)
@@ -315,6 +316,7 @@ values (22,
         22,
         20000,
         2,
+        11111,
         false,
         now(),
         now());
@@ -325,6 +327,7 @@ insert into ordersitem(ordersitem_id,
                        users_id,
                        price,
                        qty,
+                       company_id,
                        shipped,
                        created_At,
                        updated_At)
@@ -333,6 +336,7 @@ values (33,
         22,
         300000,
         3,
+        11111,
         true,
         now(),
         now());
@@ -383,7 +387,7 @@ insert into shipping(shipping_id,
                      updated_At)
 values (33,
         22,
-        'inter-qwe',
+        22222,
         300000,
         3000,
         297000,
@@ -447,7 +451,7 @@ insert into credit(credit_id,
                    updated_At)
 values (3366753,
         22,
-        'inter-qwe',
+        22222,
         33,
         '발송',
         '첫주문',
@@ -469,7 +473,7 @@ insert into credit(credit_id,
                    updated_At)
 values (33667533,
         22,
-        'inter-qwe',
+        22222,
         33,
         '입금',
         '주문 후 입금',

@@ -24,11 +24,12 @@ public class OrdersItemController {
         return ResponseEntity.ok(ordersItemService.getAllOrdersItems());
     }
 
-    @GetMapping("/ordersitem/{userId}")
-    public ResponseEntity<List<OrdersItemDTO>> getAllCartsItemsByUserId(
-            @Valid @PathVariable("userId") Long userId
+    @GetMapping("/{companyId}/ordersitem/{userId}")
+    public ResponseEntity<List<OrdersItemDTO>> getAllCartsItemsByUserIdAndCompanyId(
+            @Valid @PathVariable("userId") Long userId,
+            @Valid @PathVariable("companyId") Long companyId
     ) {
-        return ResponseEntity.ok(ordersItemService.getAllOrdersItemsByUserId(userId));
+        return ResponseEntity.ok(ordersItemService.getAllOrdersItemsByUserIdAndCompanyId(userId, companyId));
     }
 
 }

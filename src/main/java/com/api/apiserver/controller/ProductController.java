@@ -23,14 +23,14 @@ public class ProductController {
         return ResponseEntity.ok(productService.getAllProducts());
     }
 
-    @GetMapping("/products/{companyId}")
+    @GetMapping("/{companyId}/products")
     public ResponseEntity<List<ProductsDTO>> getAllProductsByCompanyId(
             @Valid @PathVariable("companyId") String companyId
     ) {
         return ResponseEntity.ok(productService.getAllProductsByCompanyId(companyId));
     }
 
-    @GetMapping("/products/{companyId}/{category}")
+    @GetMapping("/{companyId}/products/{category}")
     public ResponseEntity<List<ProductsDTO>> getAllProductsByCompanyIdAndCategory(
             @Valid @PathVariable("companyId") String companyId,
             @Valid @PathVariable("category") String category) {

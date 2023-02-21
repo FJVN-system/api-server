@@ -20,18 +20,4 @@ public class HealthController {
         return ResponseEntity.ok("ok");
     }
 
-//    private final CartsItemService cartsItemService;
-
-//    @GetMapping("/healthcheck")
-//    public ResponseEntity<List<CartsItemDTO>> getAllCartsItems() {
-//        return ResponseEntity.ok(cartsItemService.getAllCartsItems());
-//    }
-
-//    @GetMapping("/carts/{userId}")
-//    public ResponseEntity<List<CartsItemDTO>> getAllCartsItemsByUserId(
-//            @Valid @PathVariable("userId") Long userId
-//    ) {
-//        return ResponseEntity.ok(cartsItemService.getAllCartsItemsByUserId(userId));
-//    }
-
 }

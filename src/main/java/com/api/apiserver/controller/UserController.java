@@ -1,6 +1,7 @@
 package com.api.apiserver.controller;
 
 import com.api.apiserver.DTO.users.CreateUsers;
+import com.api.apiserver.DTO.users.UserDTO;
 import com.api.apiserver.DTO.users.UsersDTO;
 import com.api.apiserver.service.UsersService;
 import lombok.AllArgsConstructor;
@@ -21,6 +22,12 @@ public class UserController {
         return ResponseEntity.ok(usersService.getAllUsers());
     }
 
+    @GetMapping("/users/{userId}")
+    public ResponseEntity<UserDTO> getUser(
+            @Valid @PathVariable("userId") Long userId) {
+        return ResponseEntity.ok(usersService.getUser(userId));
+    }
+
     @PostMapping("/users")
     public CreateUsers.Response createUser(
             @RequestBody @Valid CreateUsers.Request request
@@ -30,7 +37,7 @@ public class UserController {
                         request.getUserName()));
     }
 
-    @GetMapping("/users/{companyId}")
+    @GetMapping("/usersbycompanyid/{companyId}")
     public ResponseEntity<List<UsersDTO>> getAllUsersByCompanyId(
             @Valid @PathVariable String companyId
     ) {

@@ -1,9 +1,11 @@
 package com.api.apiserver.service;
 
+import com.api.apiserver.DTO.users.UserDTO;
 import com.api.apiserver.DTO.users.UsersDTO;
 import com.api.apiserver.domain.Users;
 import com.api.apiserver.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,6 +29,12 @@ public class UsersServiceImpl implements UsersService{
                         .updatedAt(LocalDateTime.now())
                         .build())
         );
+    }
+
+    @Override
+    public UserDTO getUser(Long userId) {
+        Users user = usersRepository.findById(userId);
+        return UserDTO.fromEntity(user);
     }
 
     @Override

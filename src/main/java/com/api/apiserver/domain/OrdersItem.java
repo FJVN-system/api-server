@@ -33,6 +33,11 @@ public class OrdersItem {
     @JoinColumn(name = "users_id")
     private Users users;
 
+    @JsonIgnore
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "company_id")
+    private Company company;
+
     private Long price;
 
     private Long qty;
