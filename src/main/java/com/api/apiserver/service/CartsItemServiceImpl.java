@@ -69,6 +69,14 @@ public class CartsItemServiceImpl implements CartsItemService{
                         .build()));
     }
 
+    @Override
+    public String deleteCartsItem(Long userId, Long cartItemId) {
+        usersService.getUser(userId);
+//        TODO 응답값 수정이랑 벨리데이션, 익셉션 추가해야함
+        cartsItemRepository.deleteById(cartItemId);
+        return "ok";
+    }
+
     private void validateCreateCartsItem(Product product, Long qty) throws CartsItemException {
         if (product.getStock() <= qty) {
             throw new CartsItemException(ORDER_QTY_EXCEED_STOCK);

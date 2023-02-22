@@ -2,7 +2,6 @@ package com.api.apiserver.service;
 
 
 import com.api.apiserver.DTO.cartsitem.CartsItemDTO;
-import com.api.apiserver.DTO.users.UsersDTO;
 
 import java.util.List;
 
@@ -13,4 +12,5 @@ public interface CartsItemService {
     List<CartsItemDTO> getAllCartsItemsByUserIdAndProductId(Long userId, Long productId);
 
     CartsItemDTO createCartsItem(Long userId, Long productId, Long qty);
+    String deleteCartsItem(Long userId, Long cartItemId);
 }

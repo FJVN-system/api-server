@@ -2,7 +2,7 @@ package com.api.apiserver.controller;
 
 import com.api.apiserver.DTO.cartsitem.CartsItemDTO;
 import com.api.apiserver.DTO.cartsitem.CreateCartsItem;
-import com.api.apiserver.DTO.users.CreateUsers;
+import com.api.apiserver.DTO.cartsitem.DeleteCartsItem;
 import com.api.apiserver.service.CartsItemService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -26,13 +26,22 @@ public class CartsItemController {
     public ResponseEntity<CreateCartsItem.Response>  createCarts(
             @RequestBody @Valid CreateCartsItem.Request request
     ) {
-
         return ResponseEntity.ok(CreateCartsItem.Response.from(
                 cartsItemService.createCartsItem(
                         request.getUsersId(),
                         request.getProductId(),
                         request.getQty()
                 )));
+    }
+
+    @DeleteMapping("/carts")
+    public ResponseEntity<String>  deleteCartItem(
+            @RequestBody @Valid DeleteCartsItem.Request request
+    ) {
+        ;
+        return ResponseEntity.ok(cartsItemService.deleteCartsItem(
+                request.getUsersId(),
+                request.getCartItemId()));
     }
 
     @GetMapping("/carts/{userId}")

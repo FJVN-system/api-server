@@ -1,7 +1,6 @@
 package com.api.apiserver.controller;
 
 import com.api.apiserver.DTO.users.CreateUsers;
-import com.api.apiserver.DTO.users.UserDTO;
 import com.api.apiserver.DTO.users.UsersDTO;
 import com.api.apiserver.service.UsersService;
 import lombok.AllArgsConstructor;

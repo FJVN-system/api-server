@@ -3,7 +3,6 @@ package com.api.apiserver.service;
 
 import com.api.apiserver.DTO.users.UsersDTO;
 import com.api.apiserver.domain.Users;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
