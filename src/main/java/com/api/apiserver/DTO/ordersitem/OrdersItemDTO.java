@@ -14,6 +14,8 @@ import java.time.LocalDateTime;
 public class OrdersItemDTO {
 
     private Long id;
+    private Long userId;
+    private String userName;
     private String productTitle;
     private Long price;
     private Long qty;
@@ -24,6 +26,8 @@ public class OrdersItemDTO {
     public static OrdersItemDTO fromEntity(OrdersItem ordersItem) {
         return OrdersItemDTO.builder()
                 .id(ordersItem.getId())
+                .userId(ordersItem.getUsers().getId())
+                .userName(ordersItem.getUsers().getUserName())
                 .productTitle(ordersItem.getProduct().getTitle())
                 .price(ordersItem.getPrice())
                 .qty(ordersItem.getQty())
