@@ -31,6 +31,10 @@ public class CartsItemServiceImpl implements CartsItemService{
                 .orElseThrow(() -> new CartsItemException(CART_ITEM_NOT_FOUND));
 
     }
+    @Override
+    public List<CartsItem> getAllByUsers_Id(Long userId) {
+        return cartsItemRepository.findAllByUsers_Id(userId);
+    }
 
     @Override
     public List<CartsItemDTO> getAllCartsItems() {
@@ -112,7 +116,8 @@ public class CartsItemServiceImpl implements CartsItemService{
             throw new CartsItemException(ORDER_QTY_EXCEED_STOCK);
         }
     }
-
+    // TODO: 위아래 검증이 사실상 동일함 -> 하나로 합치는 리팩토링 필요함
+    // ordersItemserviceImpl 에 있는 검증과도 동일, common으로 빼도 되나?
     private void validateModifyCartsItem(Product product, Long qty) throws CartsItemException {
         if (product.getStock() <= qty) {
             throw new CartsItemException(ORDER_QTY_EXCEED_STOCK);

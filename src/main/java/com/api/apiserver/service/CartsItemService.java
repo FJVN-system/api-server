@@ -20,4 +20,6 @@ public interface CartsItemService {
 
     CartsItemDTO modifyCartsItem(Long usersId, Long cartItemId, Long qty);
 
+    List<CartsItem> getAllByUsers_Id(Long userId);
+
 }
