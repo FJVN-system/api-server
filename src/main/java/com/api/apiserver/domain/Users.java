@@ -42,6 +42,9 @@ public class Users {
     private List<CartsItem> cartsItems = new ArrayList<>();
 
     @OneToMany(mappedBy = "users")
+    private List<OrdersItem> ordersItems = new ArrayList<>();
+
+    @OneToMany(mappedBy = "users")
     private List<Shipping> shippings = new ArrayList<>();
 
     @OneToMany(mappedBy = "users")

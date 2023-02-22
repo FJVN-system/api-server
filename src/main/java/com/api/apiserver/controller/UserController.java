@@ -2,6 +2,7 @@ package com.api.apiserver.controller;
 
 import com.api.apiserver.DTO.users.CreateUsers;
 import com.api.apiserver.DTO.users.UsersDTO;
+import com.api.apiserver.DTO.users.UsersWithOrdersDTO;
 import com.api.apiserver.service.UsersService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,13 @@ public class UserController {
         return ResponseEntity.ok(usersService.getAllUsers());
     }
 
+    @GetMapping("/userswithorders/{companyId}")
+    public ResponseEntity<List<UsersWithOrdersDTO>> getAllUsersWithOrders(
+            @Valid @PathVariable("companyId") Long companyId
+    ) {
+        return ResponseEntity.ok(usersService.getAllUsersWithOrders(companyId));
+    }
+
     @GetMapping("/users/{userId}")
     public ResponseEntity<UsersDTO> getUser(
             @Valid @PathVariable("userId") Long userId) {
@@ -37,7 +45,7 @@ public class UserController {
 
     @GetMapping("/usersbycompanyid/{companyId}")
     public ResponseEntity<List<UsersDTO>> getAllUsersByCompanyId(
-            @Valid @PathVariable String companyId
+            @Valid @PathVariable Long companyId
     ) {
         return ResponseEntity.ok(usersService.getAllUsersByCompanyId(companyId));
     }

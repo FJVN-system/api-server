@@ -12,7 +12,7 @@ import java.util.Optional;
 @Repository
 public interface UsersRepository extends JpaRepository<Users, String> {
 
-    List<Users> findByCompany_Id(String company_id);
+    List<Users> findByCompany_Id(Long company_id);
 
     Optional<Users> findById(Long users_id);
 
