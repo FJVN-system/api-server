@@ -26,6 +26,13 @@ public class OrdersItemController {
         return ResponseEntity.ok(ordersItemService.getAllOrdersItems());
     }
 
+    @GetMapping("/{companyId}/ordersitem")
+    public ResponseEntity<List<OrdersItemDTO>> getAllOrdersItemsByCompanyId(
+            @Valid @PathVariable("companyId") Long companyId
+    ) {
+        return ResponseEntity.ok(ordersItemService.getAllOrdersItemsByCompanyId(companyId));
+    }
+
     @PostMapping("/ordersitem/{userId}")
     public ResponseEntity<OrderDTO> createOrder(
             @Valid @PathVariable("userId") Long userId) {

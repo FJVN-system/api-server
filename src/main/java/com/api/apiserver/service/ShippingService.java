@@ -12,4 +12,6 @@ public interface ShippingService {
 
 
     List<ShippingDTO> getAllProductsByCompanyIdAndUsersId(Long companyId, Long userId);
+
+    List<ShippingDTO> getAllShippingByCompanyId(Long companyId);
 }

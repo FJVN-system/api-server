@@ -12,6 +12,8 @@ import java.util.Optional;
 public interface OrdersItemRepository extends JpaRepository<OrdersItem, String> {
     List<OrdersItem> findByCompany_IdAndUsers_Id(Long userId, Long companyId);
 
+    List<OrdersItem> findByCompany_Id(Long companyId);
+
     Optional<OrdersItem> findByUsers_IdAndProduct_Id(Long userId, Long productId);
 
     List<OrdersItem> findAllByUsers_Id(Long userId);

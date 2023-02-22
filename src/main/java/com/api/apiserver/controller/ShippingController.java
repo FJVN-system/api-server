@@ -20,6 +20,12 @@ public class ShippingController {
 
     private final ShippingService shippingService;
 
+    @GetMapping("/{companyId}/shipping")
+    public ResponseEntity<List<ShippingDTO>> getAllShippingByCompanyId(
+            @Valid @PathVariable("companyId") Long companyId) {
+        return ResponseEntity.ok(shippingService.getAllShippingByCompanyId(companyId));
+    }
+
     @GetMapping("/{companyId}/shipping/{userId}")
     public ResponseEntity<List<ShippingDTO>> getAllShippingByCompanyIdAndUsersId(
             @Valid @PathVariable("companyId") Long companyId,

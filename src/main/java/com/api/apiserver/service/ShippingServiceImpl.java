@@ -21,6 +21,15 @@ public class ShippingServiceImpl implements ShippingService{
     private final ShippingRepository shippingRepository;
 
     @Override
+    public List<ShippingDTO> getAllShippingByCompanyId(Long companyId) {
+        List<Shipping> shippingList = shippingRepository.findByCompany_Id(companyId);
+        return shippingList
+                .stream()
+                .map(ShippingDTO::new)
+                .toList();
+    }
+
+    @Override
     public List<ShippingDTO> getAllProductsByCompanyIdAndUsersId(Long companyId, Long userId) {
         List<Shipping> shippingList = shippingRepository.findByCompany_IdAndUsers_Id(companyId, userId);
         return shippingList

@@ -14,8 +14,10 @@ public interface OrdersItemService {
     List<OrdersItemDTO> getAllOrdersItems();
 
     List<OrdersItemDTO> getAllOrdersItemsByUserIdAndCompanyId(Long companyId, Long userId);
+    List<OrdersItemDTO> getAllOrdersItemsByCompanyId(Long companyId);
 
     Optional<OrdersItem> getOrderItemByUserIdAndProductId(Long userId, Long productId);
 
     OrderDTO createOrderItem(Long userId);
+
 }
