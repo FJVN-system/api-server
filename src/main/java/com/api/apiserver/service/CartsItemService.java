@@ -3,6 +3,7 @@ package com.api.apiserver.service;
 
 import com.api.apiserver.DTO.cartsitem.CartsItemDTO;
 import com.api.apiserver.domain.CartsItem;
+import com.api.apiserver.domain.OrdersItem;
 
 import java.util.List;
 
@@ -18,4 +19,5 @@ public interface CartsItemService {
     CartsItemDTO deleteCartsItem(Long userId, Long cartItemId);
 
     CartsItemDTO modifyCartsItem(Long usersId, Long cartItemId, Long qty);
+
 }
