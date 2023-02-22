@@ -3,6 +3,7 @@ package com.api.apiserver.controller;
 import com.api.apiserver.DTO.cartsitem.CartsItemDTO;
 import com.api.apiserver.DTO.cartsitem.CreateCartsItem;
 import com.api.apiserver.DTO.cartsitem.DeleteCartsItem;
+import com.api.apiserver.DTO.cartsitem.ModifyCartsItem;
 import com.api.apiserver.service.CartsItemService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -34,14 +35,23 @@ public class CartsItemController {
                 )));
     }
 
+    @PutMapping("/carts")
+    public ResponseEntity<ModifyCartsItem.Response>  modifyCartItem(
+            @RequestBody @Valid ModifyCartsItem.Request request) {
+        return ResponseEntity.ok(ModifyCartsItem.Response.from(
+                cartsItemService.modifyCartsItem(
+                        request.getUsersId(),
+                        request.getCartItemId(),
+                        request.getQty())));
+    }
+
     @DeleteMapping("/carts")
-    public ResponseEntity<String>  deleteCartItem(
-            @RequestBody @Valid DeleteCartsItem.Request request
-    ) {
-        ;
-        return ResponseEntity.ok(cartsItemService.deleteCartsItem(
-                request.getUsersId(),
-                request.getCartItemId()));
+    public ResponseEntity<DeleteCartsItem.Response>  deleteCartItem(
+            @RequestBody @Valid DeleteCartsItem.Request request) {
+        return ResponseEntity.ok(DeleteCartsItem.Response.from(
+                cartsItemService.deleteCartsItem(
+                        request.getUsersId(),
+                        request.getCartItemId())));
     }
 
     @GetMapping("/carts/{userId}")
