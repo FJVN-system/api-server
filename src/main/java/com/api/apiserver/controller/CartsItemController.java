@@ -24,9 +24,9 @@ public class CartsItemController {
         return ResponseEntity.ok(cartsItemService.getAllCartsItems());
     }
 
-    // TODO 테스트코드 작성필요
+    // TODO 테스트코드 작성필요(실패 케이스들: 상품이 없거나, 유저가 없거나 -> 서비스에서 했는데 여기서도 해야하나?)
     @PostMapping("/carts")
-    public ResponseEntity<CreateCartsItem.Response>  createCarts(
+    public ResponseEntity<CreateCartsItem.Response>  createCartsItem(
             @RequestBody @Valid CreateCartsItem.Request request
     ) {
         return ResponseEntity.ok(CreateCartsItem.Response.from(
@@ -58,7 +58,6 @@ public class CartsItemController {
                         request.getCartItemId())));
     }
 
-    // TODO 테스트코드 작성필요
     @GetMapping("/carts/{userId}")
     public ResponseEntity<List<CartsItemDTO>> getAllCartsItemsByUserId(
             @Valid @PathVariable("userId") Long userId

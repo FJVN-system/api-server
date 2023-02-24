@@ -32,8 +32,6 @@ public class CartsItemServiceImpl implements CartsItemService{
 
     }
 
-
-
     // TODO 테스트코드 작성필요
     @Override
     public List<CartsItem> getAllByUsers_Id(Long userId) {
