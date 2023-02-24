@@ -1,5 +1,6 @@
 package com.api.apiserver.domain;
 
+import com.api.apiserver.repository.CartsItemRepository;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
@@ -18,6 +19,7 @@ import static javax.persistence.FetchType.LAZY;
 @Entity
 @Table(name = "cartsitem")
 public class CartsItem {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

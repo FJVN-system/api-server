@@ -297,41 +297,41 @@ values (22,
         now(),
         now());
 
-
-
--- 프로덕트 메모 productmemo
-insert into productMemo(productmemo_id,
-                        product_id,
-                        content,
-                        created_At,
-                        updated_At)
-values (11,
-        11,
-        '중요한 상품',
-        now(),
-        now());
-
-insert into productMemo(productmemo_id,
-                        product_id,
-                        content,
-                        created_At,
-                        updated_At)
-values (22,
-        11,
-        '안좋은 상품',
-        now(),
-        now());
-
-insert into productMemo(productmemo_id,
-                        product_id,
-                        content,
-                        created_At,
-                        updated_At)
-values (33,
-        22,
-        '인터 상품',
-        now(),
-        now());
+--
+--
+-- -- 프로덕트 메모 productmemo
+-- insert into productMemo(productmemo_id,
+--                         product_id,
+--                         content,
+--                         created_At,
+--                         updated_At)
+-- values (11,
+--         11,
+--         '중요한 상품',
+--         now(),
+--         now());
+--
+-- insert into productMemo(productmemo_id,
+--                         product_id,
+--                         content,
+--                         created_At,
+--                         updated_At)
+-- values (22,
+--         11,
+--         '안좋은 상품',
+--         now(),
+--         now());
+--
+-- insert into productMemo(productmemo_id,
+--                         product_id,
+--                         content,
+--                         created_At,
+--                         updated_At)
+-- values (33,
+--         22,
+--         '인터 상품',
+--         now(),
+--         now());
 
 
 

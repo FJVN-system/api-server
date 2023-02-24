@@ -46,10 +46,6 @@ public class Product {
 
     @JsonIgnore
     @OneToMany(mappedBy = "product")
-    private List<ProductMemo> productMemo = new ArrayList<>();
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "product")
     private List<StockHistory> stockHistory = new ArrayList<>();
 
     private String thumbNailUrl;
