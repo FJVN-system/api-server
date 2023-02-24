@@ -29,6 +29,7 @@ public class OrdersItemServiceImpl implements OrdersItemService{
     private final UsersService usersService;
     private final CartsItemService cartsItemService;
 
+    // TODO 테스트코드 작성필요
     @Override
     public List<OrdersItemDTO> getAllOrdersItems() {
         List<OrdersItem> ordersItemList = ordersItemRepository.findAll();
@@ -38,6 +39,7 @@ public class OrdersItemServiceImpl implements OrdersItemService{
                 .toList();
     }
 
+    // TODO 테스트코드 작성필요
     @Override
     public List<OrdersItemDTO> getAllOrdersItemsByUserIdAndCompanyId(Long companyId, Long userId) {
         List<OrdersItem> ordersItemList = ordersItemRepository.findByCompany_IdAndUsers_Id(companyId, userId);
@@ -47,6 +49,7 @@ public class OrdersItemServiceImpl implements OrdersItemService{
                 .toList();
     }
 
+    // TODO 테스트코드 작성필요
     @Override
     public List<OrdersItemDTO> getAllOrdersItemsByCompanyId(Long companyId) {
         List<OrdersItem> ordersItems = ordersItemRepository.findByCompany_Id(companyId);
@@ -56,12 +59,13 @@ public class OrdersItemServiceImpl implements OrdersItemService{
                 .toList();
     }
 
+    // TODO 테스트코드 작성필요
     @Override
     public Optional<OrdersItem> getOrderItemByUserIdAndProductId(Long userId, Long productId) {
         return ordersItemRepository.findByUsers_IdAndProduct_Id(userId, productId);
     }
 
-
+    // TODO 테스트코드 작성필요
     @Transactional
     @Override
     public OrderDTO createOrderItem(Long userId) {
@@ -114,6 +118,7 @@ public class OrdersItemServiceImpl implements OrdersItemService{
         return orderDTO;
     }
 
+    // TODO 테스트코드 작성필요
     private void validateProductQty(Product product, Long qty) throws CartsItemException {
         if (product.getStock() <= qty) {
             throw new CartsItemException(ORDER_QTY_EXCEED_STOCK);

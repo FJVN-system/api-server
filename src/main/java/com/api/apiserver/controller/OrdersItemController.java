@@ -21,11 +21,13 @@ public class OrdersItemController {
 
     private final OrdersItemService ordersItemService;
 
+    // TODO 테스트코드 작성필요
     @GetMapping("/ordersitem")
     public ResponseEntity<List<OrdersItemDTO>> getAllOrdersItems() {
         return ResponseEntity.ok(ordersItemService.getAllOrdersItems());
     }
 
+    // TODO 테스트코드 작성필요
     @GetMapping("/{companyId}/ordersitem")
     public ResponseEntity<List<OrdersItemDTO>> getAllOrdersItemsByCompanyId(
             @Valid @PathVariable("companyId") Long companyId
@@ -33,12 +35,14 @@ public class OrdersItemController {
         return ResponseEntity.ok(ordersItemService.getAllOrdersItemsByCompanyId(companyId));
     }
 
+    // TODO 테스트코드 작성필요
     @PostMapping("/ordersitem/{userId}")
     public ResponseEntity<OrderDTO> createOrder(
             @Valid @PathVariable("userId") Long userId) {
         return ResponseEntity.ok(ordersItemService.createOrderItem(userId));
     }
 
+    // TODO 테스트코드 작성필요
     @GetMapping("/{companyId}/ordersitem/{userId}")
     public ResponseEntity<List<OrdersItemDTO>> getAllCartsItemsByUserIdAndCompanyId(
             @Valid @PathVariable("companyId") Long companyId,

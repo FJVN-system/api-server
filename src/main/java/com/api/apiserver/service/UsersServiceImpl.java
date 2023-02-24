@@ -22,6 +22,7 @@ public class UsersServiceImpl implements UsersService{
 
     private final UsersRepository usersRepository;
 
+    // TODO 테스트코드 작성필요
     @Override
     public UsersDTO createUser(String userName) {
         return UsersDTO.fromEntity(
@@ -33,18 +34,21 @@ public class UsersServiceImpl implements UsersService{
         );
     }
 
+    // TODO 테스트코드 작성필요
     @Override
     public Users getUser(Long userId) {
         return usersRepository.findById(userId)
                 .orElseThrow(()-> new UserException(USER_NOT_FOUND));
     }
 
+    // TODO 테스트코드 작성필요
     @Override
     public UsersDTO getUserDTO(Long userId) {
         return UsersDTO.fromEntity(usersRepository.findById(userId)
                 .orElseThrow(()-> new UserException(USER_NOT_FOUND)));
     }
 
+    // TODO 테스트코드 작성필요
     @Override
     public List<UsersDTO> getAllUsers() {
         List<Users> usersList = usersRepository.findAll();
@@ -54,6 +58,7 @@ public class UsersServiceImpl implements UsersService{
                 .toList();
     }
 
+    // TODO 테스트코드 작성필요
     @Override
     public List<UsersWithOrdersDTO> getAllUsersWithOrders(Long companyId) {
         List<UsersWithOrdersDTO> users = new ArrayList<>();
@@ -69,6 +74,7 @@ public class UsersServiceImpl implements UsersService{
         return users;
     }
 
+    // TODO 테스트코드 작성필요
     @Override
     public List<UsersDTO> getAllUsersByCompanyId(Long companyId) {
         List<Users> usersList = usersRepository.findByCompany_Id(companyId);
@@ -78,6 +84,7 @@ public class UsersServiceImpl implements UsersService{
                 .toList();
     }
 
+    // TODO 테스트코드 작성필요
     @Override
     public List<Users> getUsersByCompanyId(Long companyId) {
         return usersRepository.findByCompany_Id(companyId);

@@ -17,11 +17,13 @@ public class UserController {
 
     private final UsersService usersService;
 
+    // TODO 테스트코드 작성필요
     @GetMapping("/users")
     public ResponseEntity<List<UsersDTO>> getAllUsers() {
         return ResponseEntity.ok(usersService.getAllUsers());
     }
 
+    // TODO 테스트코드 작성필요
     @GetMapping("/userswithorders/{companyId}")
     public ResponseEntity<List<UsersWithOrdersDTO>> getAllUsersWithOrders(
             @Valid @PathVariable("companyId") Long companyId
@@ -29,12 +31,14 @@ public class UserController {
         return ResponseEntity.ok(usersService.getAllUsersWithOrders(companyId));
     }
 
+    // TODO 테스트코드 작성필요
     @GetMapping("/users/{userId}")
     public ResponseEntity<UsersDTO> getUser(
             @Valid @PathVariable("userId") Long userId) {
         return ResponseEntity.ok(usersService.getUserDTO(userId));
     }
 
+    // TODO 테스트코드 작성필요
     @PostMapping("/users")
     public CreateUsers.Response createUser(
             @RequestBody @Valid CreateUsers.Request request
@@ -43,6 +47,7 @@ public class UserController {
                 usersService.createUser(request.getUserName()));
     }
 
+    // TODO 테스트코드 작성필요
     @GetMapping("/usersbycompanyid/{companyId}")
     public ResponseEntity<List<UsersDTO>> getAllUsersByCompanyId(
             @Valid @PathVariable Long companyId

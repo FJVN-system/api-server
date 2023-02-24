@@ -15,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class HealthController {
 
+    // TODO 테스트코드 작성필요
     @GetMapping("/healthcheck")
     public ResponseEntity<String> healthcheck() {
         return ResponseEntity.ok("ok");

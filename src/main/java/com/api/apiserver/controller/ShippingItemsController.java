@@ -20,6 +20,7 @@ public class ShippingItemsController {
 
     private final ShippingItemsService shippingItemsService;
 
+    // TODO 테스트코드 작성필요
     @GetMapping("/shippingitems/{shippingId}")
     public ResponseEntity<List<ShippingItemDTO>> getAllShippingItemsByShippingId(
             @Valid @PathVariable("shippingId") Long shippingId) {

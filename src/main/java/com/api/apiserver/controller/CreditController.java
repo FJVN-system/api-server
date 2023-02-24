@@ -17,6 +17,7 @@ import java.util.List;
 public class CreditController {
     private final CreditService creditService;
 
+    // TODO 테스트코드 작성필요
     @GetMapping("/{companyId}/credit/{userId}")
     public ResponseEntity<List<CreditDTO>> getAllCreditCompanyIdAndUsersId(
             @Valid @PathVariable("companyId") Long companyId,

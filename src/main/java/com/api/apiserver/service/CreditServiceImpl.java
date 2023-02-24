@@ -18,6 +18,7 @@ import java.util.List;
 public class CreditServiceImpl implements CreditService{
     private final CreditRepository creditRepository;
 
+    // TODO 테스트코드 작성필요
     @Override
     public List<CreditDTO> getAllCreditCompanyIdAndUsersId(Long companyId, Long userId) {
         List<Credit> creditList = creditRepository.findByCompany_IdAndUsers_Id(companyId, userId);

@@ -20,13 +20,14 @@ public class ProductServiceImpl implements ProductService{
 
     private final ProductRepository productRepository;
 
+    // TODO 테스트코드 작성필요
     @Transactional
     public Product getProduct(Long productId) {
         return productRepository.findById(productId)
                 .orElseThrow(() -> new ProductException(PRODUCT_NOT_FOUND));
     }
 
-
+    // TODO 테스트코드 작성필요
     @Override
     public List<ProductsDTO> getAllProducts(){
         List<Product> products = productRepository.findAll();
@@ -36,7 +37,7 @@ public class ProductServiceImpl implements ProductService{
                 .toList();
     }
 
-
+    // TODO 테스트코드 작성필요
     @Override
     public List<ProductsDTO> getAllProductsByCompanyId(Long companyId) {
         List<Product> products = productRepository.findByCompany_Id(companyId);
@@ -46,6 +47,7 @@ public class ProductServiceImpl implements ProductService{
                 .toList();
     }
 
+    // TODO 테스트코드 작성필요
     @Override
     public List<ProductsDTO> getAllProductsByCompanyIdAndCategory(Long companyId, String category) {
         List<Product> products = productRepository.findByCompany_IdAndCategory_Name(companyId, category);

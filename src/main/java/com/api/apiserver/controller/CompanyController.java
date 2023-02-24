@@ -14,6 +14,7 @@ public class CompanyController {
 
     private final CompanyService companyService;
 
+    // TODO 테스트코드 작성필요
     @GetMapping("/company/{companyId}")
     public ResponseEntity<CompanyDTO> getCompany(
             @Valid @PathVariable("companyId") Long companyId) {

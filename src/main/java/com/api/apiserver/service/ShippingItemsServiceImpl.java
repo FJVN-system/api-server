@@ -18,6 +18,7 @@ import java.util.List;
 public class ShippingItemsServiceImpl implements ShippingItemsService{
     private final ShippingItemsRepository shippingItemsRepository;
 
+    // TODO 테스트코드 작성필요
     @Override
     public List<ShippingItemDTO> getAllShippingItemsByShippingId(Long shippingId) {
         List<ShippingItems> shippingList = shippingItemsRepository.findByShipping_Id(shippingId);

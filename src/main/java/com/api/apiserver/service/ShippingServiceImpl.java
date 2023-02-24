@@ -20,6 +20,7 @@ public class ShippingServiceImpl implements ShippingService{
 
     private final ShippingRepository shippingRepository;
 
+    // TODO 테스트코드 작성필요
     @Override
     public List<ShippingDTO> getAllShippingByCompanyId(Long companyId) {
         List<Shipping> shippingList = shippingRepository.findByCompany_Id(companyId);
@@ -29,6 +30,7 @@ public class ShippingServiceImpl implements ShippingService{
                 .toList();
     }
 
+    // TODO 테스트코드 작성필요
     @Override
     public List<ShippingDTO> getAllProductsByCompanyIdAndUsersId(Long companyId, Long userId) {
         List<Shipping> shippingList = shippingRepository.findByCompany_IdAndUsers_Id(companyId, userId);

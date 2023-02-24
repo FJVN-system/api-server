@@ -18,11 +18,13 @@ public class ProductController {
 
     private final ProductService productService;
 
+    // TODO 테스트코드 작성필요
     @GetMapping("/products")
     public ResponseEntity<List<ProductsDTO>> getAllProducts() {
         return ResponseEntity.ok(productService.getAllProducts());
     }
 
+    // TODO 테스트코드 작성필요
     @GetMapping("/{companyId}/products")
     public ResponseEntity<List<ProductsDTO>> getAllProductsByCompanyId(
             @Valid @PathVariable("companyId") Long companyId
@@ -30,6 +32,7 @@ public class ProductController {
         return ResponseEntity.ok(productService.getAllProductsByCompanyId(companyId));
     }
 
+    // TODO 테스트코드 작성필요
     @GetMapping("/{companyId}/products/{category}")
     public ResponseEntity<List<ProductsDTO>> getAllProductsByCompanyIdAndCategory(
             @Valid @PathVariable("companyId") Long companyId,

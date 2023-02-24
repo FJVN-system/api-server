@@ -18,11 +18,13 @@ public class CartsItemController {
 
     private final CartsItemService cartsItemService;
 
+    // TODO 테스트코드 작성필요
     @GetMapping("/carts")
     public ResponseEntity<List<CartsItemDTO>> getAllCartsItems() {
         return ResponseEntity.ok(cartsItemService.getAllCartsItems());
     }
 
+    // TODO 테스트코드 작성필요
     @PostMapping("/carts")
     public ResponseEntity<CreateCartsItem.Response>  createCarts(
             @RequestBody @Valid CreateCartsItem.Request request
@@ -35,6 +37,7 @@ public class CartsItemController {
                 )));
     }
 
+    // TODO 테스트코드 작성필요
     @PutMapping("/carts")
     public ResponseEntity<ModifyCartsItem.Response>  modifyCartItem(
             @RequestBody @Valid ModifyCartsItem.Request request) {
@@ -45,6 +48,7 @@ public class CartsItemController {
                         request.getQty())));
     }
 
+    // TODO 테스트코드 작성필요
     @DeleteMapping("/carts")
     public ResponseEntity<DeleteCartsItem.Response>  deleteCartItem(
             @RequestBody @Valid DeleteCartsItem.Request request) {
@@ -54,6 +58,7 @@ public class CartsItemController {
                         request.getCartItemId())));
     }
 
+    // TODO 테스트코드 작성필요
     @GetMapping("/carts/{userId}")
     public ResponseEntity<List<CartsItemDTO>> getAllCartsItemsByUserId(
             @Valid @PathVariable("userId") Long userId

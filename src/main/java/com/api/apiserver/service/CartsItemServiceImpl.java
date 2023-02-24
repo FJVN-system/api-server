@@ -31,11 +31,16 @@ public class CartsItemServiceImpl implements CartsItemService{
                 .orElseThrow(() -> new CartsItemException(CART_ITEM_NOT_FOUND));
 
     }
+
+
+
+    // TODO 테스트코드 작성필요
     @Override
     public List<CartsItem> getAllByUsers_Id(Long userId) {
         return cartsItemRepository.findAllByUsers_Id(userId);
     }
 
+    // TODO 테스트코드 작성필요
     @Override
     public List<CartsItemDTO> getAllCartsItems() {
         List<CartsItem> cartsItemList = cartsItemRepository.findAll();
@@ -45,6 +50,8 @@ public class CartsItemServiceImpl implements CartsItemService{
                 .toList();
     }
 
+
+    // TODO 테스트코드 작성필요
     @Override
     public List<CartsItemDTO> getAllCartsItemsByUserId(Long userId) {
         List<CartsItem> cartsItemList = cartsItemRepository.findByUsers_Id(userId);
@@ -53,6 +60,8 @@ public class CartsItemServiceImpl implements CartsItemService{
                 .map(CartsItemDTO::fromEntity)
                 .toList();
     }
+
+    // TODO 테스트코드 작성필요
     @Override
     public List<CartsItemDTO> getAllCartsItemsByUserIdAndProductId(Long userId, Long productId) {
         List<CartsItem> cartsItemList = cartsItemRepository.findByUsers_IdAndProduct_Id(userId, productId);
@@ -62,6 +71,7 @@ public class CartsItemServiceImpl implements CartsItemService{
                 .toList();
     }
 
+    // TODO 테스트코드 작성필요
     @Override
     public CartsItemDTO createCartsItem(Long userId, Long productId, Long qty) {
         Users user = usersService.getUser(userId);
@@ -81,6 +91,8 @@ public class CartsItemServiceImpl implements CartsItemService{
                         .build()));
     }
 
+
+    // TODO 테스트코드 작성필요
     @Override
     public CartsItemDTO deleteCartsItem(Long userId, Long cartItemId) {
         usersService.getUser(userId);
@@ -94,6 +106,8 @@ public class CartsItemServiceImpl implements CartsItemService{
     }
 
 
+
+    // TODO 테스트코드 작성필요
     @Override
     public CartsItemDTO modifyCartsItem(Long usersId, Long cartItemId, Long qty) {
         Users user = usersService.getUser(usersId);
@@ -111,12 +125,16 @@ public class CartsItemServiceImpl implements CartsItemService{
                         .build()));
     }
 
+
+    // TODO 테스트코드 작성필요
     private void validateCreateCartsItem(Product product, Long qty) throws CartsItemException {
         if (product.getStock() <= qty) {
             throw new CartsItemException(ORDER_QTY_EXCEED_STOCK);
         }
     }
+
     // TODO: 위아래 검증이 사실상 동일함 -> 하나로 합치는 리팩토링 필요함
+    // TODO 테스트코드 작성필요
     // ordersItemserviceImpl 에 있는 검증과도 동일, common으로 빼도 되나?
     private void validateModifyCartsItem(Product product, Long qty) throws CartsItemException {
         if (product.getStock() <= qty) {
@@ -124,6 +142,7 @@ public class CartsItemServiceImpl implements CartsItemService{
         }
     }
 
+    // TODO 테스트코드 작성필요
     private void validateAlreadyExistCartsItem(Users users, Product product) throws CartsItemException {
         List<CartsItemDTO> cartsItemDTO = getAllCartsItemsByUserIdAndProductId(users.getId(), product.getId());
         if (cartsItemDTO.size() > 0) {

@@ -20,12 +20,14 @@ public class ShippingController {
 
     private final ShippingService shippingService;
 
+    // TODO 테스트코드 작성필요
     @GetMapping("/{companyId}/shipping")
     public ResponseEntity<List<ShippingDTO>> getAllShippingByCompanyId(
             @Valid @PathVariable("companyId") Long companyId) {
         return ResponseEntity.ok(shippingService.getAllShippingByCompanyId(companyId));
     }
 
+    // TODO 테스트코드 작성필요
     @GetMapping("/{companyId}/shipping/{userId}")
     public ResponseEntity<List<ShippingDTO>> getAllShippingByCompanyIdAndUsersId(
             @Valid @PathVariable("companyId") Long companyId,

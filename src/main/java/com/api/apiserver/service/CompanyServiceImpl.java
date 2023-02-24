@@ -15,6 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class CompanyServiceImpl implements CompanyService{
 
     private final CompanyRepository companyRepository;
+
+
+    // TODO 테스트코드 작성필요
     @Override
     public CompanyDTO getCompany(Long companyId) {
         Company company = companyRepository.findById(companyId);
