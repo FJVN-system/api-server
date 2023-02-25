@@ -1,22 +1,20 @@
 {
-  "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:594311320189:task-definition/fjvn-api:1",
+  "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:594311320189:task-definition/fjvn_prod:22",
   "containerDefinitions": [
     {
-      "name": "fjvn-api",
-      "image": "594311320189.dkr.ecr.ap-northeast-2.amazonaws.com/fjvn-api:latest",
-      "cpu": 0,
+      "name": "fjvn-api-server-prod",
+      "image": "594311320189.dkr.ecr.ap-northeast-2.amazonaws.com/fjvn_ecr_prod:504c7afefc8963d74190e0cb91db54fcf7de3306",
+      "cpu": 256,
+      "memory": 512,
       "portMappings": [
         {
-          "name": "fjvn-api-8080-tcp",
           "containerPort": 8080,
           "hostPort": 8080,
-          "protocol": "tcp",
-          "appProtocol": "http"
+          "protocol": "tcp"
         }
       ],
       "essential": true,
       "environment": [],
-      "environmentFiles": [],
       "mountPoints": [],
       "volumesFrom": [],
       "logConfiguration": {
@@ -30,10 +28,10 @@
       }
     }
   ],
-  "family": "fjvn-api",
-  "executionRoleArn": "arn:aws:iam::594311320189:role/ecsTaskExecutionRole",
+  "family": "fjvn_prod",
+  "executionRoleArn": "arn:aws:iam::594311320189:role/ecs-staging-execution-role",
   "networkMode": "awsvpc",
-  "revision": 1,
+  "revision": 22,
   "volumes": [],
   "status": "ACTIVE",
   "requiresAttributes": [
@@ -70,13 +68,9 @@
   "requiresCompatibilities": [
     "FARGATE"
   ],
-  "cpu": "512",
-  "memory": "1024",
-  "runtimePlatform": {
-    "cpuArchitecture": "X86_64",
-    "operatingSystemFamily": "LINUX"
-  },
-  "registeredAt": "2023-02-17T15:00:44.603Z",
+  "cpu": "256",
+  "memory": "512",
+  "registeredAt": "2023-02-25T12:02:34.246Z",
   "registeredBy": "arn:aws:iam::594311320189:user/kkh",
   "tags": []
 }
