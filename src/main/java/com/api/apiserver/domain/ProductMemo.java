@@ -11,6 +11,8 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static javax.persistence.FetchType.LAZY;
+
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,7 +26,7 @@ public class ProductMemo {
     @Column(name = "productMemo_id")
     private Long productMemoId;
 
-    @ManyToOne
+    @ManyToOne( fetch = LAZY)
     @JoinColumn(name = "product_id")
     private Product product;
 
