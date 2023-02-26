@@ -1047,9 +1047,9 @@ values (4504527,
         insert into productmemo(
         product_memo_id,
         product_id,
-        memo_time,
+        created_At,
         memo_user,
-        memo_correction_time
+        updated_At
         )
         values(500,
         22,
@@ -1061,9 +1061,9 @@ values (4504527,
         insert into productmemo(
         product_memo_id,
         product_id,
-        memo_time,
+        created_At,
         memo_user,
-        memo_correction_time
+        updated_At
         )
         values(501,
         22,
