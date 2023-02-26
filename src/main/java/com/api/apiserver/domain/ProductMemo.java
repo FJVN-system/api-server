@@ -1,5 +1,6 @@
 package com.api.apiserver.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,7 +27,8 @@ public class ProductMemo {
     @Column(name = "productMemo_id")
     private Long productMemoId;
 
-    @ManyToOne( fetch = LAZY)
+    @JsonIgnore
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "product_id")
     private Product product;
 
