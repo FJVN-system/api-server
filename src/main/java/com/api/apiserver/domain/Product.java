@@ -43,6 +43,9 @@ public class Product {
     @JoinColumn(name = "ent_id")
     private Ent ent;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "product")
+    private List<ProductMemo> productMemos = new ArrayList<>();
 
     @JsonIgnore
     @OneToMany(mappedBy = "product")

@@ -1043,3 +1043,33 @@ values (4504527,
         0,
         now(),
         now());
+
+        insert into productmemo(
+        product_memo_id,
+        product_id,
+        memo_time,
+        memo_user,
+        memo_correction_time
+        )
+        values(500,
+        22,
+        now(),
+        '심재우',
+        now()
+        );
+
+        insert into productmemo(
+        product_memo_id,
+        product_id,
+        memo_time,
+        memo_user,
+        memo_correction_time
+        )
+        values(501,
+        22,
+        now(),
+        '심재우',
+        now()
+        );
+
+
