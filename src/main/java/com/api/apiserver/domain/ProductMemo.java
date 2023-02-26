@@ -33,12 +33,12 @@ public class ProductMemo {
     private Product product;
 
     @CreatedDate
-    private LocalDateTime memoTime;
+    private LocalDateTime createdAt;
 
     private String memoUser;
 
     @LastModifiedDate
-    private LocalDateTime memoCorrectionTime;
+    private LocalDateTime updatedAt;
 
 
 }

@@ -22,19 +22,17 @@ public class ProductMemoServiceImpl implements ProductMemoService{
     public List<ProductMemoDto> getProductMemoByProductId(Long productId) {
         List<ProductMemo> productMemos = productMemoRepository.findAllByProduct_Id(productId);
 
-        List<ProductMemoDto> productMemoDtoStream = productMemos.stream()
+        List<ProductMemoDto> productMemoDto = productMemos.stream()
                 .map(productMemo ->
                         new ProductMemoDto(
                                 productMemo.getProductMemoId(),
-                                productMemo.getMemoTime(),
+                                productMemo.getCreatedAt(),
                                 productMemo.getMemoUser(),
-                                productMemo.getMemoCorrectionTime()))
+                                productMemo.getUpdatedAt()))
                 .collect(Collectors.toList());
 
 
-        System.out.println(productMemos.get(0).getProduct().getTitle());
 
-
-        return productMemoDtoStream;
+        return productMemoDto;
     }
 }

@@ -19,11 +19,11 @@ public class ProductMemoDto {
 
     private Long productMemoId;
 
-    private LocalDateTime memoTime;
+    private LocalDateTime createdAt;
 
     private String memoUser;
 
-    private LocalDateTime memoCorrectionTime;
+    private LocalDateTime updatedAt;
 
 
 
