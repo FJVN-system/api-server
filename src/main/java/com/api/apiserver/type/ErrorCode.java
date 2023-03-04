@@ -24,7 +24,11 @@ public enum ErrorCode {
     ORDER_QTY_EXCEED_STOCK("재고가 부족합니다"),
     CART_ITEM_NOT_FOUND("장바구니에 없습니다."),
     ALREADY_ADDED_ON_CART("해당 상품이 이미 장바구니에 있습니다."),
-    USER_NOT_FOUND("해당 유저가 없습니다.");
+    USER_NOT_FOUND("해당 유저가 없습니다."),
+
+    PRODUCTMEMO_NOT_FOUND("해당 상품의 메모가 없습니다");
 
     private final String Description;
+
+
 }

@@ -32,6 +32,12 @@ public class GlobalExceptionHandler {
         return new ErrorResponse(e.getErrorCode(), e.getErrorMessage());
     }
 
+    @ExceptionHandler
+    public ErrorResponse handleProductMemoException(ProductMemoException e) {
+        log.error("{} is occurred !", e.getErrorCode());
+        return new ErrorResponse(e.getErrorCode(), e.getErrorMessage());
+    }
+
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ErrorResponse handleDataIntegrityViolationExceptionException(DataIntegrityViolationException e) {
 
@@ -43,5 +49,7 @@ public class GlobalExceptionHandler {
         log.error("Exception is occurred !", e);
         return new ErrorResponse(INTERNAL_SERVER_ERROR, INTERNAL_SERVER_ERROR.getDescription());
     }
+    
+
 
 }

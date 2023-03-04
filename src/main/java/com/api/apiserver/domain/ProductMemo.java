@@ -1,10 +1,7 @@
 package com.api.apiserver.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -19,6 +16,7 @@ import static javax.persistence.FetchType.LAZY;
 @AllArgsConstructor
 @Entity
 @Setter
+@Builder
 @Table(name = "productmemo")
 public class ProductMemo {
 
@@ -32,13 +30,28 @@ public class ProductMemo {
     @JoinColumn(name = "product_id")
     private Product product;
 
+    @JsonIgnore
+    @JoinColumn(name = "users_id")
+    @ManyToOne
+    private Users users;
+
+
     @CreatedDate
     private LocalDateTime createdAt;
-
-    private String memoUser;
 
     @LastModifiedDate
     private LocalDateTime updatedAt;
 
+    private String content;
 
+    public ProductMemo(Product product, LocalDateTime createdAt,
+                       Users users, LocalDateTime updatedAt,
+                       String content) {
+
+        this.product = product;
+        this.createdAt = createdAt;
+        this.users = users;
+        this.updatedAt = updatedAt;
+        this.content = content;
+    }
 }

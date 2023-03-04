@@ -10,6 +10,7 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,12 +22,9 @@ public class ProductMemoDto {
 
     private LocalDateTime createdAt;
 
-    private String memoUser;
+    private Long usersId;
 
     private LocalDateTime updatedAt;
-
-
-
 
 
 }

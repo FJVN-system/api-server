@@ -14,5 +14,4 @@ public interface ProductMemoRepository extends JpaRepository<ProductMemo, Long> 
 
     List<ProductMemo> findAllByProduct_Id(Long productId);
 
-
 }
