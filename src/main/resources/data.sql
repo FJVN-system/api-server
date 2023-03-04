@@ -1048,28 +1048,31 @@ values (4504527,
         product_memo_id,
         product_id,
         created_At,
-        memo_user,
-        updated_At
+        users_id,
+        updated_At,
+        content
         )
         values(500,
         22,
         now(),
-        '심재우',
-        now()
+        22,
+        now(),
+        '내용1'
         );
 
         insert into productmemo(
         product_memo_id,
         product_id,
         created_At,
-        memo_user,
-        updated_At
+        users_id,
+        updated_At,
+        content
         )
         values(501,
         22,
         now(),
-        '심재우',
-        now()
-        );
+        22,
+        now(),
+        '내용');
 
 
