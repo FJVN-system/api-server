@@ -38,6 +38,10 @@ public class Users {
     @JoinColumn(name = "company_id")
     private Company company;
 
+
+    @OneToMany(mappedBy = "users")
+    private List<ProductMemo> productMemos = new ArrayList<>();
+
     @OneToMany(mappedBy = "users")
     private List<CartsItem> cartsItems = new ArrayList<>();
 
