@@ -42,7 +42,6 @@ public class OrdersItemDTO {
                 .price(ordersItem.getPrice())
                 .qty(ordersItem.getQty())
                 .totalPrice(ordersItem.getPrice() * ordersItem.getQty())
-                .totalPrice(ordersItem.getPrice() * ordersItem.getQty())
                 .shipped(ordersItem.getShipped())
                 .canceled(ordersItem.getCanceled())
                 .picked(ordersItem.getPicked())
