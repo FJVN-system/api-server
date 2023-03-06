@@ -9,7 +9,7 @@ insert into company(company_id,
 values (11111,
         'HM',
         '만수',
-        'www.naver.com',
+        'https://www.naver.com',
         now(),
         now());
 
@@ -22,7 +22,7 @@ insert into company(company_id,
 values (22222,
         'INTER',
         '주',
-        'www.google.com',
+        'https://www.google.com',
         now(),
         now());
 
