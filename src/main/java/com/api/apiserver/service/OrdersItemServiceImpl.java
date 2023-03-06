@@ -94,6 +94,9 @@ public class OrdersItemServiceImpl implements OrdersItemService{
                         .price(cartsItem.getPrice())
                         .qty(cartsItem.getQty() + ordersItem.get().getQty())
                         .shipped(false)
+                        .deleted(false)
+                        .picked(false)
+                        .canceled(false)
                         .createdAt(cartsItem.getCreatedAt())
                         .updatedAt(LocalDateTime.now())
                         .build());
@@ -107,11 +110,15 @@ public class OrdersItemServiceImpl implements OrdersItemService{
                         .price(cartsItem.getPrice())
                         .qty(cartsItem.getQty())
                         .shipped(false)
+                        .deleted(false)
+                        .picked(false)
+                        .canceled(false)
                         .createdAt(cartsItem.getCreatedAt())
                         .updatedAt(LocalDateTime.now())
                         .build());
             }
             cartsItemService.deleteCartsItem(userId, cartsItem.getId());
+            // TODO 주문시 상품 수량 감소
             orderDTO.setItemCount(orderDTO.getItemCount() + 1);
             orderDTO.setItemQty(orderDTO.getItemQty() + cartsItem.getQty());
             orderDTO.setTotalPrice(orderDTO.getTotalPrice() + cartsItem.getPrice());
