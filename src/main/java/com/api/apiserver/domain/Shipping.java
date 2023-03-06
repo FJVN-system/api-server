@@ -39,6 +39,8 @@ public class Shipping {
     private Long totalCount;
     private Long itemsCount;
 
+    private String trackingNumber;
+
     private String ShippedAddressName;
     private String shippingType;
     private LocalDateTime shippedAt;

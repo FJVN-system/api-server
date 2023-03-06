@@ -16,12 +16,11 @@ public class ShippingDTO {
     private Long itemsPrice;
     private Long totalCount;
     private Long itemsCount;
+    private String trackingNumber;
     private String ShippedAddressName;
     private String shippingType;
     private LocalDateTime shippedAt;
-
     private LocalDateTime createdAt;
-
     private LocalDateTime updatedAt;
 
     public ShippingDTO(Shipping shipping) {
@@ -33,6 +32,7 @@ public class ShippingDTO {
         this.itemsPrice = shipping.getItemsPrice();
         this.totalCount = shipping.getTotalCount();
         this.itemsCount = shipping.getItemsCount();
+        this.trackingNumber = shipping.getTrackingNumber();
         this.ShippedAddressName = shipping.getShippedAddressName();
         this.shippingType = shipping.getShippingType();
         this.shippedAt = shipping.getShippedAt();
