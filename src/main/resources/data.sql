@@ -81,12 +81,14 @@ insert into users(users_id,
                   users_name,
                   company_id,
                   discountbyuser_id,
+                  users_email,
                   created_At,
                   updated_At)
 values (22,
         '김경환',
         11111,
         1000,
+        'rudghksldl@gmail.com',
         now(),
         now());
 
@@ -94,12 +96,14 @@ insert into users(users_id,
                   users_name,
                   company_id,
                   discountbyuser_id,
+                  users_email,
                   created_At,
                   updated_At)
 values (33,
         '환',
         22222,
         1010,
+        'kkhdevs@gmail.com',
         now(),
         now());
 

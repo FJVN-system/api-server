@@ -33,6 +33,10 @@ public class Users {
     @Column(name = "users_name", unique = true)
     private String userName;
 
+    @NotNull
+    @Column(name = "users_email", unique = true)
+    private String userEmail;
+
     @JsonIgnore
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "company_id")
