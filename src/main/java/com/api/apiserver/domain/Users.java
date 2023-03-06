@@ -54,6 +54,13 @@ public class Users {
     @OneToMany(mappedBy = "users")
     private List<Address> addresses = new ArrayList<>();
 
+    @OneToOne
+    @JoinColumn(name = "discountbyuser_id")
+    private DiscountByUser discountByUser;
+
+    @OneToMany(mappedBy = "users")
+    private List<DiscountByCategory> discountByCategories = new ArrayList<>();
+
     @CreatedDate
     private LocalDateTime createdAt;
 

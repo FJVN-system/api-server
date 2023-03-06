@@ -1,5 +1,6 @@
 package com.api.apiserver.domain;
 
+import com.api.apiserver.type.CompanyLevel;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -9,6 +10,8 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.api.apiserver.type.CompanyLevel.DEMO;
 
 @Getter
 @Setter
@@ -42,12 +45,23 @@ public class Company {
     @OneToMany(mappedBy = "company")
     private List<StockHistory> stockHistories = new ArrayList<>();
 
+    @OneToMany(mappedBy = "company")
+    private List<DiscountByUser> discountByUsers = new ArrayList<>();
+
+    @OneToMany(mappedBy = "company")
+    private List<DiscountByCategory> discountByCategories = new ArrayList<>();
+
     @NotNull
     @Column(name = "company_name",unique = true)
     private String companyName;
 
     @NotNull
     private String owner;
+
+    private String storeUrl;
+
+    @Enumerated(EnumType.STRING)
+    private CompanyLevel companyLevel;
 
     @CreatedDate
     private LocalDateTime createdAt;

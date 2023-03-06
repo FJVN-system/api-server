@@ -126,7 +126,7 @@ public class CartsItemServiceImpl implements CartsItemService{
 
     // TODO 테스트코드 작성필요
     private void validateCreateCartsItem(Product product, Long qty) throws CartsItemException {
-        if (product.getStock() <= qty) {
+        if (product.getStock() < qty) {
             throw new CartsItemException(ORDER_QTY_EXCEED_STOCK);
         }
     }

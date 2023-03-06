@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+import static com.api.apiserver.type.ErrorCode.CART_ITEMS_NOT_FOUND;
 import static com.api.apiserver.type.ErrorCode.ORDER_QTY_EXCEED_STOCK;
 
 @Transactional
@@ -71,6 +72,9 @@ public class OrdersItemServiceImpl implements OrdersItemService{
     public OrderDTO createOrderItem(Long userId) {
         usersService.getUser(userId);
         List<CartsItem> cartsItems = cartsItemService.getAllByUsers_Id(userId);
+
+        validateCartsItems(cartsItems);
+
         OrderDTO orderDTO = new OrderDTO(0L,0L,0L);
         for (CartsItem cartsItem : cartsItems) {
 //            카트아이템에서 상품아이디 찾아서
@@ -81,8 +85,6 @@ public class OrdersItemServiceImpl implements OrdersItemService{
 
             if (ordersItem.isPresent()) {
                 //            있으면 기존 주문에 수량을 더해서 재고랑 비교후 재고보다 크면 익샙션,
-                System.out.println("ordersItem" + ordersItem.orElseThrow().getProduct().getTitle());
-                System.out.println("기존주문 수량 + 장바구니 수량 비교해서 상품의 재고랑 비교하는 검증 추가");
                 validateProductQty(cartsItem.getProduct(), ordersItem.get().getQty() + cartsItem.getQty());
                 ordersItemRepository.save(OrdersItem.builder()
                         .id(ordersItem.get().getId())
@@ -97,7 +99,6 @@ public class OrdersItemServiceImpl implements OrdersItemService{
                         .build());
             }else {
 //            없으면 상품의 재고랑 비교 후 저장
-                System.out.println("장바구니 수량, 상품의 재고랑 비교하는 검증 추가");
                 validateProductQty(cartsItem.getProduct(), cartsItem.getQty());
                 ordersItemRepository.save(OrdersItem.builder()
                         .product(cartsItem.getProduct())
@@ -119,9 +120,16 @@ public class OrdersItemServiceImpl implements OrdersItemService{
     }
 
     // TODO 테스트코드 작성필요
+    private void validateCartsItems(List<CartsItem> cartsItems) {
+        if (cartsItems.size() == 0) {
+            throw new CartsItemException(CART_ITEMS_NOT_FOUND);
+        }
+    }
+
+    // TODO 테스트코드 작성필요
     private void validateProductQty(Product product, Long qty) throws CartsItemException {
-        if (product.getStock() <= qty) {
-            throw new CartsItemException(ORDER_QTY_EXCEED_STOCK);
+        if (product.getStock() < qty) {
+            throw new CartsItemException(ORDER_QTY_EXCEED_STOCK, product.getStock());
         }
     }
 }

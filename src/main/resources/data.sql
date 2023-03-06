@@ -3,62 +3,32 @@
 insert into company(company_id,
                     company_name,
                     owner,
+                    store_url,
                     created_at,
                     updated_at)
 values (11111,
         'HM',
         '만수',
+        'www.naver.com',
         now(),
         now());
 
 insert into company(company_id,
                     company_name,
                     owner,
+                    store_url,
                     created_at,
                     updated_at)
 values (22222,
         'INTER',
         '주',
-        now(),
-        now());
-
---- 유저 user
-insert into users(users_id,
-                  users_name,
-                  company_id,
-                  created_At,
-                  updated_At)
-values (22,
-        '김경환',
-        11111,
+        'www.google.com',
         now(),
         now());
 
 
-insert into users(users_id,
-                  users_name,
-                  company_id,
-                  created_At,
-                  updated_At)
-values (33,
-        '환',
-        22222,
-        now(),
-        now());
 
--- 아티스트 artist
-insert into artist(artist_id,
-                   artist_name,
-                   company_id)
-values (11,
-        '진',
-        11111);
-insert into artist(artist_id,
-                   artist_name,
-                   company_id)
-values (22,
-        '뷔',
-        22222);
+
 
 -- 카테고리 category
 insert into category(category_id,
@@ -74,6 +44,123 @@ insert into category(category_id,
 values (22,
         '굿즈',
         22222);
+
+-- 유저별 할인
+insert into discountbyuser(discountbyuser_id,
+                           company_id,
+                           rate,
+                           amount,
+                           created_At,
+                           updated_At)
+values (1010,
+        22222,
+        20,
+        2000,
+        now(),
+        now());
+
+insert into discountbyuser(discountbyuser_id,
+                           company_id,
+                           rate,
+                           amount,
+                           created_At,
+                           updated_At)
+values (1000,
+        11111,
+        10,
+        1000,
+        now(),
+        now());
+
+
+
+
+
+--- 유저 user
+insert into users(users_id,
+                  users_name,
+                  company_id,
+                  discountbyuser_id,
+                  created_At,
+                  updated_At)
+values (22,
+        '김경환',
+        11111,
+        1000,
+        now(),
+        now());
+
+insert into users(users_id,
+                  users_name,
+                  company_id,
+                  discountbyuser_id,
+                  created_At,
+                  updated_At)
+values (33,
+        '환',
+        22222,
+        1010,
+        now(),
+        now());
+
+
+-- 카테고리별 할인
+insert into discountbycategory(discountbycategory_id,
+                               users_id,
+                               category_id,
+                               company_id,
+                               rate,
+                               amount,
+                               created_At,
+                               updated_At)
+values (10000,
+        22,
+        11,
+        11111,
+        5,
+        5000,
+        now(),
+        now());
+
+
+insert into discountbycategory(discountbycategory_id,
+                               users_id,
+                               category_id,
+                               company_id,
+                               rate,
+                               amount,
+                               created_At,
+                               updated_At)
+values (10020,
+        33,
+        22,
+        22222,
+        15,
+        15000,
+        now(),
+        now());
+
+
+
+
+
+
+
+-- 아티스트 artist
+insert into artist(artist_id,
+                   artist_name,
+                   company_id)
+values (11,
+        '진',
+        11111);
+insert into artist(artist_id,
+                   artist_name,
+                   company_id)
+values (22,
+        '뷔',
+        22222);
+
+
 
 -- 엔터 ent
 insert into ent(ent_id,
@@ -1044,35 +1131,32 @@ values (4504527,
         now(),
         now());
 
-        insert into productmemo(
-        product_memo_id,
-        product_id,
-        created_At,
-        users_id,
-        updated_At,
-        content
-        )
-        values(500,
+insert into productmemo(product_memo_id,
+                        product_id,
+                        created_At,
+                        users_id,
+                        updated_At,
+                        content)
+values (500,
         22,
         now(),
         22,
         now(),
-        '내용1'
-        );
+        '내용1');
 
-        insert into productmemo(
-        product_memo_id,
-        product_id,
-        created_At,
-        users_id,
-        updated_At,
-        content
-        )
-        values(501,
+insert into productmemo(product_memo_id,
+                        product_id,
+                        created_At,
+                        users_id,
+                        updated_At,
+                        content)
+values (501,
         22,
         now(),
         22,
         now(),
         '내용');
+
+
 
 

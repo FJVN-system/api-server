@@ -6,6 +6,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+
 import java.time.LocalDateTime;
 
 import static javax.persistence.FetchType.LAZY;
@@ -16,17 +17,17 @@ import static javax.persistence.FetchType.LAZY;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "ordersitem")
-public class OrdersItem {
+@Table(name = "discountbycategory")
+public class DiscountByCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ordersitem_id")
+    @Column(name = "discountbycategory_id")
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     @JsonIgnore
     @ManyToOne(fetch = LAZY)
@@ -38,17 +39,9 @@ public class OrdersItem {
     @JoinColumn(name = "company_id")
     private Company company;
 
-    private Long price;
+    private Long rate;
 
-    private Long qty;
-
-    private Boolean shipped = false;
-
-    private Boolean picked = false;
-
-    private Boolean canceled = false;
-
-    private Boolean deleted = false;
+    private Long amount;
 
 
     @CreatedDate
@@ -56,6 +49,5 @@ public class OrdersItem {
 
     @LastModifiedDate
     private LocalDateTime updatedAt;
-
 
 }

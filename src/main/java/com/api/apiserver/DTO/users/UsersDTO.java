@@ -16,6 +16,7 @@ public class UsersDTO {
     private Long companyId;
     private String userName;
     private String companyName;
+    private String storeUrl;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -24,6 +25,7 @@ public class UsersDTO {
                 .id(users.getId())
                 .companyId(users.getCompany().getId())
                 .companyName(users.getCompany().getCompanyName())
+                .storeUrl(users.getCompany().getStoreUrl())
                 .userName(users.getUserName())
                 .createdAt(users.getCreatedAt())
                 .updatedAt(users.getUpdatedAt())
