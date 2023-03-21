@@ -12,13 +12,13 @@ import lombok.*;
 public class EntDTO {
 
     private Long id;
-    private String artistName;
+    private String entName;
     private Long companyId;
 
     public static EntDTO fromEntity(Ent ent) {
         return EntDTO.builder()
                 .id(ent.getId())
-                .artistName(ent.getName())
+                .entName(ent.getName())
                 .companyId(ent.getCompany().getId())
                 .build();
     }
