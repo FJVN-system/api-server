@@ -1,9 +1,9 @@
 package com.api.apiserver.service;
 
 //import com.api.apiserver.DTO.product.ProductsDTO;
+import com.api.apiserver.DTO.product.CreateProduct;
 import com.api.apiserver.DTO.product.ProductsDTO;
 import com.api.apiserver.domain.Product;
-import com.api.apiserver.domain.Users;
 
 import java.util.List;
 
@@ -16,4 +16,7 @@ public interface ProductService {
     List<ProductsDTO> getAllProductsByCompanyId(Long companyId);
 
     List<ProductsDTO> getAllProductsByCompanyIdAndCategory(Long companyId, String category);
+
+    List<Product> createProductsBulk(List<CreateProduct.Request> requests, Long companyId);
+    Product createProduct(CreateProduct.Request requests, Long companyId);
 }
