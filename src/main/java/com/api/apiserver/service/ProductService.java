@@ -2,6 +2,7 @@ package com.api.apiserver.service;
 
 //import com.api.apiserver.DTO.product.ProductsDTO;
 import com.api.apiserver.DTO.product.CreateProduct;
+import com.api.apiserver.DTO.product.CreateProductBulk;
 import com.api.apiserver.DTO.product.ProductsDTO;
 import com.api.apiserver.domain.Product;
 
@@ -17,6 +18,6 @@ public interface ProductService {
 
     List<ProductsDTO> getAllProductsByCompanyIdAndCategory(Long companyId, String category);
 
-    List<Product> createProductsBulk(List<CreateProduct.Request> requests, Long companyId);
+    List<Product> createProductsBulk(List<CreateProductBulk.Request> requests, Long companyId);
     Product createProduct(CreateProduct.Request requests, Long companyId);
 }

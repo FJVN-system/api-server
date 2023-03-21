@@ -1,6 +1,7 @@
 package com.api.apiserver.controller;
 
 import com.api.apiserver.DTO.product.CreateProduct;
+import com.api.apiserver.DTO.product.CreateProductBulk;
 import com.api.apiserver.DTO.product.ProductsDTO;
 import com.api.apiserver.domain.Product;
 import com.api.apiserver.service.CompanyService;
@@ -55,7 +56,7 @@ public class ProductController {
     @PostMapping("/{companyId}/products/bulk")
     public int createProductsBulk(
             @Valid @PathVariable("companyId") Long companyId,
-            @RequestBody @Valid List<CreateProduct.Request> request
+            @RequestBody @Valid List<CreateProductBulk.Request> request
     ) {
         List<Product> productList = productService.createProductsBulk(request, companyId);
 

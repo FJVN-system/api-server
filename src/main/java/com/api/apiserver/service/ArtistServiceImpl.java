@@ -49,4 +49,14 @@ public class ArtistServiceImpl implements ArtistService{
     public void deleteArtist(Long id) {
         artistRepository.deleteById(id);
     }
+
+    @Override
+    public Artist getOrCreateArtistByCompanyIdAndArtistName(Long companyId, String artistName) {
+        Optional<Artist> artist = artistRepository.findByCompany_IdAndName(companyId, artistName);
+        if (artist.isPresent()){
+            return artist.get();
+        }else {
+            return createArtist(artistName, companyId);
+        }
+    }
 }

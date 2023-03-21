@@ -1,6 +1,7 @@
 package com.api.apiserver.service;
 
 import com.api.apiserver.DTO.product.CreateProduct;
+import com.api.apiserver.DTO.product.CreateProductBulk;
 import com.api.apiserver.DTO.product.ProductsDTO;
 import com.api.apiserver.domain.*;
 import com.api.apiserver.exception.ArtistException;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.api.apiserver.type.ErrorCode.*;
@@ -23,7 +25,9 @@ import static com.api.apiserver.type.ErrorCode.*;
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService{
 
-
+    private final ArtistService artistService;
+    private final CategoryService categoryService;
+    private final EntService entService;
     private final ProductRepository productRepository;
     private final CompanyRepository companyRepository;
     private final ArtistRepository artistRepository;
@@ -70,31 +74,30 @@ public class ProductServiceImpl implements ProductService{
 
     // TODO 테스트코드 작성필요
     @Override
-    public List<Product> createProductsBulk(List<CreateProduct.Request> requests, Long companyId) {
+    public List<Product> createProductsBulk(List<CreateProductBulk.Request> requests, Long companyId) {
         Company company = companyRepository.findById(companyId);
-        List<Product> products = requests.stream()
-                .map(request ->
-                        Product.builder()
-                                .company(company)
-                                .title(request.getTitle())
-                                .barcode(request.getBarcode())
-                                .price(request.getPrice())
-                                .description(request.getDesc())
-                                .purchasePrice(request.getPurchase())
-                                .preorderDeadline(request.getDeadline())
-                                .releaseDate(request.getRelease())
-                                .sku(request.getSku())
-                                .stock(request.getStock())
-                                .thumbNailUrl(request.getThumb())
-                                .weight(request.getWeight())
-                                .createdAt(LocalDateTime.now())
-                                .updatedAt(LocalDateTime.now())
-                                // TODO 입력받아야함 -> 상품 등록 페이지에서  아래 3개 각각 리스트 받는게 우선, 아래 각각 요소 추가 기능도 만들어야함
-                                .artist(Artist.builder().id(11L).name("진").company(company).build())
-                                .category(Category.builder().id(11L).name("음반").company(company).build())
-                                .ent(Ent.builder().id(11L).name("hive").company(company).build())
-                                .build())
-                .toList();
+
+        List<Product> products = requests.stream().map(request ->
+                Product.builder()
+                        .company(company)
+                        .title(request.getTitle())
+                        .barcode(request.getBarcode())
+                        .price(request.getPrice())
+                        .description(request.getDesc())
+                        .purchasePrice(request.getPurchase())
+                        .preorderDeadline(request.getDeadline())
+                        .releaseDate(request.getRelease())
+                        .sku(request.getSku())
+                        .stock(request.getStock())
+                        .thumbNailUrl(request.getThumb())
+                        .weight(request.getWeight())
+                        .createdAt(LocalDateTime.now())
+                        .updatedAt(LocalDateTime.now())
+                        .artist(artistService.getOrCreateArtistByCompanyIdAndArtistName(companyId, request.getArtist()))
+                        .category(categoryService.getOrCreateCategoryByCompanyIdAndCategoryName(companyId, request.getCategory()))
+                        .ent(entService.getOrCreateEntByCompanyIdAndEntName(companyId, request.getEnt()))
+                        .build()).toList();
+
         List<Product> saveAll = productRepository.saveAll(products);
         return saveAll;
     }
@@ -102,9 +105,6 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public Product createProduct(CreateProduct.Request requests,Long companyId) {
         Company company = companyRepository.findById(companyId);
-
-        System.out.println("requests" + requests.getArtist());
-        System.out.println("type" + requests.getArtist().getClass());
 
         return productRepository.save(Product.builder()
                 .title(requests.getTitle())

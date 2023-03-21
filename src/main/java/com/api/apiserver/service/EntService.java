@@ -14,4 +14,7 @@ public interface EntService {
     Ent createEnt(String entName, Long companyId);
 
     void deleteEnt(Long id);
+
+    Ent getOrCreateEntByCompanyIdAndEntName(Long companyId, String entName);
+
 }

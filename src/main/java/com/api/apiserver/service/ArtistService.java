@@ -14,4 +14,6 @@ public interface ArtistService {
     Artist createArtist(String artistName, Long companyId);
 
     void deleteArtist(Long id);
+
+    Artist getOrCreateArtistByCompanyIdAndArtistName(Long companyId, String artistName);
 }

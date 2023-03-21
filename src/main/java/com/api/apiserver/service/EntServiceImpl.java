@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Transactional
 @Service
@@ -42,4 +43,17 @@ public class EntServiceImpl implements EntService{
     public void deleteEnt(Long id) {
         entRepository.deleteById(id);
     }
+
+    @Override
+    public Ent getOrCreateEntByCompanyIdAndEntName(Long companyId, String entName) {
+        Optional<Ent> ent = entRepository.findByCompany_IdAndName(companyId, entName);
+        if (ent.isPresent()){
+            return ent.get();
+        }else {
+            return createEnt(entName, companyId);
+        }
+    }
+
+
+
 }
