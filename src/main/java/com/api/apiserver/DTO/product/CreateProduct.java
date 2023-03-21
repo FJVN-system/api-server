@@ -41,6 +41,13 @@ public class CreateProduct {
         @NotNull
         private Long weight;
 
+        @NotNull
+        private Long artist;
+        @NotNull
+        private Long category;
+        @NotNull
+        private Long ent;
+
 
     }
 

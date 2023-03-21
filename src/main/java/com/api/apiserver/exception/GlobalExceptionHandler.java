@@ -15,7 +15,7 @@ import static com.api.apiserver.type.ErrorCode.INVALID_REQUEST;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler
-    public ErrorResponse handleAccountException(ProductException e) {
+    public ErrorResponse handleProductException(ProductException e) {
         log.error("{} is occurred !", e.getErrorCode());
         return new ErrorResponse(e.getErrorCode(), e.getErrorMessage());
     }
@@ -34,6 +34,22 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler
     public ErrorResponse handleProductMemoException(ProductMemoException e) {
+        log.error("{} is occurred !", e.getErrorCode());
+        return new ErrorResponse(e.getErrorCode(), e.getErrorMessage());
+    }
+    @ExceptionHandler
+    public ErrorResponse handleArtistException(ArtistException e) {
+        log.error("{} is occurred !", e.getErrorCode());
+        return new ErrorResponse(e.getErrorCode(), e.getErrorMessage());
+    }
+    @ExceptionHandler
+    public ErrorResponse handleCategoryException(CategoryException e) {
+        log.error("{} is occurred !", e.getErrorCode());
+        return new ErrorResponse(e.getErrorCode(), e.getErrorMessage());
+    }
+
+    @ExceptionHandler
+    public ErrorResponse handleEntException(EntException e) {
         log.error("{} is occurred !", e.getErrorCode());
         return new ErrorResponse(e.getErrorCode(), e.getErrorMessage());
     }

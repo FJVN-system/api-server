@@ -26,6 +26,10 @@ public enum ErrorCode {
     CART_ITEMS_NOT_FOUND("장바구니에 상품이 없습니다."),
     ALREADY_ADDED_ON_CART("해당 상품이 이미 장바구니에 있습니다."),
     USER_NOT_FOUND("해당 유저가 없습니다."),
+    ARTIST_NOT_FOUND("해당 가수가 없습니다."),
+    CATEGORY_NOT_FOUND("해당 카테고리가 없습니다."),
+
+    ENT_NOT_FOUND("해당 소속사가 없습니다."),
 
     PRODUCTMEMO_NOT_FOUND("해당 상품의 메모가 없습니다");
 
