@@ -1,6 +1,8 @@
 package com.api.apiserver.controller;
 
 import com.api.apiserver.DTO.artist.ArtistDTO;
+import com.api.apiserver.DTO.artist.CreateArtist;
+import com.api.apiserver.DTO.artist.DeleteArtist;
 import com.api.apiserver.DTO.cartsitem.CartsItemDTO;
 import com.api.apiserver.DTO.cartsitem.CreateCartsItem;
 import com.api.apiserver.DTO.cartsitem.DeleteCartsItem;
@@ -27,28 +29,22 @@ public class ArtistController {
 
         return ResponseEntity.ok(artistService.getAllCartsItemsByCompanyId(companyId));
     }
-//
-//    // TODO 테스트코드 작성필요
-//    @PostMapping("/{companyId}/artists")
-//    public ResponseEntity<CreateCartsItem.Response>  createCartsItem(
-//            @RequestBody @Valid CreateCartsItem.Request request
-//    ) {
-//        return ResponseEntity.ok(CreateCartsItem.Response.from(
-//                cartsItemService.createCartsItem(
-//                        request.getUsersId(),
-//                        request.getProductId(),
-//                        request.getQty()
-//                )));
-//    }
-//
-//    // TODO 테스트코드 작성필요
-//    @DeleteMapping("/{companyId}/artists")
-//    public ResponseEntity<DeleteCartsItem.Response>  deleteCartItem(
-//            @RequestBody @Valid DeleteCartsItem.Request request) {
-//        return ResponseEntity.ok(DeleteCartsItem.Response.from(
-//                cartsItemService.deleteCartsItem(
-//                        request.getUsersId(),
-//                        request.getCartItemId())));
-//    }
+
+    // TODO 테스트코드 작성필요
+    @PostMapping("/{companyId}/artists")
+    public ResponseEntity<CreateArtist.Response>  createArtist(
+            @RequestBody @Valid CreateArtist.Request request,
+            @Valid @PathVariable("companyId") Long companyId) {
+        return ResponseEntity.ok(CreateArtist.Response.from(
+                artistService.createArtist(request.getArtistName(), companyId)));
+    }
+
+    // TODO 테스트코드 작성필요
+    @DeleteMapping("/{companyId}/artists")
+    public ResponseEntity<DeleteArtist.Response>  deleteArtist(
+            @RequestBody @Valid DeleteArtist.Request request) {
+        artistService.deleteArtist(request.getId());
+        return ResponseEntity.ok(DeleteArtist.Response.from(request.getArtistName()));
+    }
 
 }
